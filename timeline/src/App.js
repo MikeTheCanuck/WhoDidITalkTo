@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import './App.css';
 
 class App extends Component {
+  constructor() {
+    super();
+    // TODO: pull in data - local at first, remotely once the data binding logic settles
+  }
+
   renderEncounter(i) {
     return <Encounter value={i} />;
   }
@@ -34,14 +39,22 @@ class Encounter extends Component {
         </div>
         <div className="Encounter_data">
           <div className="Encounter-first-row">
-            <div className="Person-name"></div>
-            <div className="Encounter-date"></div>
+            <div className="Person-name">
+              Who:
+            </div>
+            <div className="Encounter-date">
+              When: 
+            </div>
           </div>
           <div className="Encounter-second-row">
-            <div className="Encounter-event"></div>
+            <div className="Encounter-event">
+              Where: 
+            </div>
           </div>
         </div>
-        <div className="Encounter-navigation"></div>
+        <div className="Encounter-navigation">
+          <button>></button>
+        </div>
         <hr />
       </div>
     );
