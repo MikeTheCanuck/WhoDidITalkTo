@@ -5,6 +5,9 @@ class App extends Component {
   constructor() {
     super();
     // TODO: pull in data - local at first, remotely once the data binding logic settles
+    this.state = {
+      encounters: Array(3)
+    }
   }
 
   renderEncounter(i) {
@@ -40,21 +43,21 @@ class Encounter extends Component {
         <div className="Encounter_data">
           <div className="Encounter-first-row">
             <div className="Person-name">
-              Who:
+              Who: Bob
             </div>
             <div className="Encounter-date">
-              When: 
+              When: 2017-09-18
             </div>
           </div>
           <div className="Encounter-second-row">
             <div className="Encounter-event">
-              Where: 
+              Where: there
             </div>
           </div>
         </div>
-        <div className="Encounter-navigation">
+        {/* <div className="Encounter-navigation">
           <button>></button>
-        </div>
+        </div> */}
         <hr />
       </div>
     );
