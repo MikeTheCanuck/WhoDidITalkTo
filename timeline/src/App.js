@@ -6,12 +6,34 @@ class App extends Component {
     super();
     // TODO: pull in data - local at first, remotely once the data binding logic settles
     this.state = {
-      encounters: Array(3)
+      encounters: [
+        {
+          "Date": "2017-08-17",
+          "Person": "Bobbie Morse",
+          "Event": "PDXWIT Summer Soiree",
+          "Location": "",
+          "Topics": "Going on vacation"
+        },
+        {
+          "Date": "2017-08-31",
+          "Person": "Pepper Potts",
+          "Event": "Consciousness Hacking meetup",
+          "Location": "",
+          "Topics": ""
+        },
+        {
+          "Date": "2017-08-06",
+          "Person": "Benjamin Grimm",
+          "Event": "High Church of Lean Coffee",
+          "Location": "",
+          "Topics": "we've met multiple times, had extended conversations"
+        }
+      ]
     }
   }
 
   renderEncounter(i) {
-    return <Encounter value={i} />;
+    return <Encounter value={this.state.encounters[i].Person} />;
   }
 
   render() {
@@ -43,7 +65,7 @@ class Encounter extends Component {
         <div className="Encounter_data">
           <div className="Encounter-first-row">
             <div className="Person-name">
-              Who: Bob
+              Who: {this.props.value} {/* Testing for passing values from one component to another */}
             </div>
             <div className="Encounter-date">
               When: 2017-09-18
@@ -63,3 +85,29 @@ class Encounter extends Component {
     );
   }
 }
+
+var sampleEncounters = {
+  encounters: [
+      {
+        "Date": "2017-08-17",
+        "Person": "Bobbie Morse",
+        "Event": "PDXWIT Summer Soiree",
+        "Location": "",
+        "Topics": "Going on vacation"
+      },
+      {
+        "Date": "2017-08-31",
+        "Person": "Pepper Potts",
+        "Event": "Consciousness Hacking meetup",
+        "Location": "",
+        "Topics": ""
+      },
+      {
+        "Date": "2017-08-06",
+        "Person": "Benjamin Grimm",
+        "Event": "High Church of Lean Coffee",
+        "Location": "",
+        "Topics": "we've met multiple times, had extended conversations"
+      }
+  ]
+};
