@@ -1,10 +1,24 @@
 import React, { Component } from 'react';
 import './App.css';
 import Encounter from './components/Encounter';
+import firebase from 'firebase';
+
 class App extends Component {
   constructor() {
+    // Configure Firebase realtime data source (test repo)
+    var config = {
+      apiKey: "AIzaSyBZSmg1KtjWuCsdQzhqoB0KRPK5-eZ6zRo",
+      authDomain: "whodiditalktotest.firebaseapp.com",
+      databaseURL: "https://whodiditalktotest.firebaseio.com",
+      projectId: "whodiditalktotest",
+      storageBucket: "whodiditalktotest.appspot.com",
+      messagingSenderId: "478743607097"
+    };
+    firebase.initializeApp(config);
     super();
+
     // TODO: pull in remote data
+    // This currently pulls in a local array of data
     this.state = {
       encounters: [
         {
