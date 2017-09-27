@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
+import MessageList from './components/MessageList';
+import EncounterList from './components/EncounterList';
 import Encounter from './components/Encounter';
 import firebase from 'firebase';
 
@@ -122,7 +124,9 @@ class App extends Component {
           <h1>Timeline</h1>
         </div>
         <div className="Timeline">
-          {this.renderEncounter(0)}
+          <EncounterList db={firebase} />
+          <MessageList db={firebase} />
+          {/* {this.renderEncounter(0)}
           {this.renderEncounter(1)}
           {this.renderEncounter(2)}
           {this.renderEncounter(3)}
@@ -133,7 +137,7 @@ class App extends Component {
           {this.renderEncounter(8)}
           {this.renderEncounter(9)}
           {this.renderEncounter(10)}
-          {this.renderEncounter(11)}
+          {this.renderEncounter(11)} */}
         </div>
       </div>
     );
