@@ -13,7 +13,7 @@ class Encounter extends Component {
           <div className="Encounter_data">
             <div className="Encounter-first-row">
               <div className="Person-name">
-                Who: {this.props.valuePerson}
+                Who: {this.props.Name}
               </div>
               <div className="Encounter-date">
                 When: {this.props.valueDate}
