@@ -1,9 +1,34 @@
 import React, { Component } from 'react';
 import './App.css';
+// testing React-day-5
+import Content from './components/Content';
+
 import MessageList from './components/MessageList';
 import EncounterList from './components/EncounterList';
 import Encounter from './components/Encounter';
 import firebase from 'firebase';
+
+const activities = [
+  {
+    timestamp: new Date().getTime(),
+    text: "Ate lunch",
+    user: {
+      id: 1, name: 'Nate',
+      avatar: "http://www.croop.cl/UI/twitter/images/doug.jpg"
+    },
+    comments: [{ from: 'Ari', text: 'Me too!' }]
+  },
+  {
+    timestamp: new Date().getTime(),
+    text: "Woke up early for a beautiful run",
+    user: {
+      id: 2, name: 'Ari',
+      avatar: "http://www.croop.cl/UI/twitter/images/doug.jpg"
+    },
+    comments: [{ from: 'Nate', text: 'I am so jealous' }]
+  },
+]
+
 
 class App extends Component {
   constructor() {
@@ -124,6 +149,7 @@ class App extends Component {
           <h1>Timeline</h1>
         </div>
         <div className="Timeline">
+          <Content activities={activities} />
           <EncounterList db={firebase} />
           <MessageList db={firebase} />
           {/* {this.renderEncounter(0)}
