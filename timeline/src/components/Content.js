@@ -2,8 +2,6 @@
 
 import React, {Component} from 'react';
 
-
-
 class Content extends Component {
     render() {
         const {activities} = this.props; //ES6 destructuring

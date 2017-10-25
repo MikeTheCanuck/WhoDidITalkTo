@@ -5,23 +5,26 @@ import React, {Component} from 'react';
 // This is the repeating element that displays one or more objects in the Timeline, one per encounter
 class Encounter extends Component {
     render() {
+      
+      const {encounter} = this.props; // ES6 desctructuring aka replaces `const encounter = this.props.encounter;`
+
       return (
         <div className="Encounter">
           <div className="Person-image">
-            {/* TODO: insert appropriately parameterized <img> tag */}
+            <img src={encounter.Photo} />
           </div>
           <div className="Encounter_data">
             <div className="Encounter-first-row">
               <div className="Person-name">
-                Who: {this.props.Name}
+                Who: {encounter.Person}
               </div>
               <div className="Encounter-date">
-                When: {this.props.valueDate}
+                When: {encounter.Date}
               </div>
             </div>
             <div className="Encounter-second-row">
               <div className="Encounter-event">
-                Where: {this.props.valueEvent}
+                Where: {encounter.Event}
               </div>
             </div>
           </div>

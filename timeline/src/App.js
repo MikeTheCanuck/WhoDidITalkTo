@@ -41,25 +41,28 @@ const encounters = [
     Photo: "http://www.croop.cl/UI/twitter/images/doug.jpg"
   },
   {
-    Date: "2017-08-17",
+    Date: "2017-08-19",
     Person: "Bobbie Morse",
     Event: "PDXWIT Summer Soiree",
     Location: "",
-    Topics: "Going on vacation"
+    Topics: "Going on vacation",
+    Photo: "http://www.croop.cl/UI/twitter/images/doug.jpg"    
   },
   {
     Date: "2017-08-31",
     Person: "Pepper Potts",
     Event: "Consciousness Hacking meetup",
     Location: "",
-    Topics: ""
+    Topics: "",
+    Photo: "http://www.croop.cl/UI/twitter/images/doug.jpg"
   },
   {
     Date: "2017-08-06",
     Person: "Benjamin Grimm",
     Event: "High Church of Lean Coffee",
     Location: "",
-    Topics: "we've met multiple times, had extended conversations"
+    Topics: "we've met multiple times, had extended conversations",
+    Photo: "http://www.croop.cl/UI/twitter/images/doug.jpg"
   }
 ]
 
