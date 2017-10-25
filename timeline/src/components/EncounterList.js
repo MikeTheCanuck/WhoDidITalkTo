@@ -42,27 +42,6 @@ class EncounterList extends Component {
       {encounters.map((encounter) => {
         return (
           <Encounter encounter={encounter} />
-        //   <div className="Encounter">
-        //   <div className="Person-image">
-        //     <img src={encounter.Photo} />
-        //   </div>
-        //   <div className="Encounter_data">
-        //     <div className="Encounter-first-row">
-        //       <div className="Person-name">
-        //         Who: {encounter.Person}
-        //       </div>
-        //       <div className="Encounter-date">
-        //         When: {encounter.Date}
-        //       </div>
-        //     </div>
-        //     <div className="Encounter-second-row">
-        //       <div className="Encounter-event">
-        //         Where: {encounter.Event}
-        //       </div>
-        //     </div>
-        //   </div>
-        //   <hr />
-        // </div>            
         )
       }
       )}

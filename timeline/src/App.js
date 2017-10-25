@@ -101,9 +101,6 @@ class App extends Component {
                          db={firebase} />
 
           {/* 
-          <MessageList db={firebase} /> 
-          */}
-          {/* 
           {this.renderEncounter(0)}
           {this.renderEncounter(1)}
           {this.renderEncounter(2)}
