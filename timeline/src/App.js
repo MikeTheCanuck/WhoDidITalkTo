@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
 // testing React-day-5
-import Content from './components/Content';
+// import Content from './components/Content';
 
-import MessageList from './components/MessageList';
+// import MessageList from './components/MessageList';
 import EncounterList from './components/EncounterList';
-import Encounter from './components/Encounter';
 import firebase from 'firebase';
 
 const activities = [
@@ -80,12 +79,6 @@ class App extends Component {
     firebase.initializeApp(config);
     super();
     }
-
-  renderEncounter(i) {
-    return <Encounter valuePerson={encounters[i].Person} 
-                      valueDate={encounters[i].Date}
-                      valueEvent={encounters[i].Event} />;
-  }
 
   render() {
     return (
