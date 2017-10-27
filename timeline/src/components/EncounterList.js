@@ -10,8 +10,8 @@ class EncounterList extends Component {
   //   this.state = {
   //     encounters: []
   //   };
-  //   let encounterApp = this.props.db.database().ref('testencounters');
-  //   encounterApp.on('value', snapshot => {
+  //   let encountersRef = this.props.db.database().ref('testencounters');
+  //   encountersRef.on('value', snapshot => {
   //     this.getData(snapshot.val());
   //   });
   // }
