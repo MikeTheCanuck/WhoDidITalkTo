@@ -6,6 +6,7 @@ import './App.css';
 // import MessageList from './components/MessageList';
 import EncounterList from './components/EncounterList';
 import firebase from 'firebase';
+import firebaseconfig from './firebase-config';
 
 const activities = [
   {
@@ -32,12 +33,20 @@ const activities = [
 // This currently pulls in a local array of data
 const encounters = [
   {
+    Date: "2017-08-06",
+    Person: "Benjamin Grimm",
+    Event: "High Church of Lean Coffee",
+    Location: "",
+    Topics: "we've met multiple times, had extended conversations",
+    Photo: "https://i.imgur.com/NvZs5Lv.jpg?2"
+  },
+  {
     Date: "2017-08-17",
     Person: "Donna Troy",
     Event: "PDXWIT Summer Soiree",
     Location: "",
     Topics: "Zapproved current internship program",
-    Photo: "http://www.croop.cl/UI/twitter/images/doug.jpg"
+    Photo: "https://i.imgur.com/IPRx6Mh.jpg?1"
   },
   {
     Date: "2017-08-19",
@@ -45,7 +54,7 @@ const encounters = [
     Event: "PDXWIT Summer Soiree",
     Location: "",
     Topics: "Going on vacation",
-    Photo: "http://www.croop.cl/UI/twitter/images/doug.jpg"    
+    Photo: "https://i.imgur.com/ISEueWD.jpg?2"    
   },
   {
     Date: "2017-08-31",
@@ -53,33 +62,19 @@ const encounters = [
     Event: "Consciousness Hacking meetup",
     Location: "",
     Topics: "",
-    Photo: "http://www.croop.cl/UI/twitter/images/doug.jpg"
+    Photo: "https://i.imgur.com/DZMLGb7.jpg?2"
   },
-  {
-    Date: "2017-08-06",
-    Person: "Benjamin Grimm",
-    Event: "High Church of Lean Coffee",
-    Location: "",
-    Topics: "we've met multiple times, had extended conversations",
-    Photo: "http://www.croop.cl/UI/twitter/images/doug.jpg"
-  }
 ]
 
 class App extends Component {
+  
   constructor() {
-    // Configure Firebase realtime data source (test repo)
-    var config = {
-      apiKey: "AIzaSyBZSmg1KtjWuCsdQzhqoB0KRPK5-eZ6zRo",
-      authDomain: "whodiditalktotest.firebaseapp.com",
-      databaseURL: "https://whodiditalktotest.firebaseio.com",
-      projectId: "whodiditalktotest",
-      storageBucket: "whodiditalktotest.appspot.com",
-      messagingSenderId: "478743607097"
-    };
-    firebase.initializeApp(config);
-    super();
-    }
-
+      super();
+      
+      // Initialize Firebase
+      firebase.initializeApp(firebaseconfig)    
+  }
+  
   render() {
     return (
       <div className="App">
@@ -92,6 +87,8 @@ class App extends Component {
 
           <EncounterList encounters={encounters}
                          db={firebase} />
+
+          {/* <EncounterList db={firebase} /> */}
 
           {/* 
           {this.renderEncounter(0)}
