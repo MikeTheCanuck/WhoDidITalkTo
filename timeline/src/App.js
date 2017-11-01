@@ -1,33 +1,33 @@
 import React, { Component } from 'react';
-import './App.css';
-// testing React-day-5
-// import Content from './components/Content';
-
-// import MessageList from './components/MessageList';
-import EncounterList from './components/EncounterList';
 import firebase from 'firebase';
 import firebaseconfig from './firebase-config';
 
-const activities = [
-  {
-    timestamp: new Date().getTime(),
-    text: "Ate trashy lunch",
-    user: {
-      id: 1, name: 'Nate',
-      avatar: "http://www.croop.cl/UI/twitter/images/doug.jpg"
-    },
-    comments: [{ from: 'Ari', text: 'Me too!' }]
-  },
-  {
-    timestamp: new Date().getTime(),
-    text: "Woke up early for a beautiful run",
-    user: {
-      id: 2, name: 'Ari',
-      avatar: "http://www.croop.cl/UI/twitter/images/doug.jpg"
-    },
-    comments: [{ from: 'Nate', text: 'I am so jealous' }]
-  },
-]
+import './App.css';
+// testing React-day-5
+// import Content from './components/Content';
+// import MessageList from './components/MessageList';
+import EncounterList from './components/EncounterList';
+
+// const activities = [
+//   {
+//     timestamp: new Date().getTime(),
+//     text: "Ate trashy lunch",
+//     user: {
+//       id: 1, name: 'Nate',
+//       avatar: "http://www.croop.cl/UI/twitter/images/doug.jpg"
+//     },
+//     comments: [{ from: 'Ari', text: 'Me too!' }]
+//   },
+//   {
+//     timestamp: new Date().getTime(),
+//     text: "Woke up early for a beautiful run",
+//     user: {
+//       id: 2, name: 'Ari',
+//       avatar: "http://www.croop.cl/UI/twitter/images/doug.jpg"
+//     },
+//     comments: [{ from: 'Nate', text: 'I am so jealous' }]
+//   },
+// ]
 
 // TODO: pull in remote data
 // This currently pulls in a local array of data
@@ -72,7 +72,7 @@ class App extends Component {
       super();
       
       // Initialize Firebase
-      firebase.initializeApp(firebaseconfig)    
+      firebase.initializeApp(firebaseconfig)
   }
   
   render() {

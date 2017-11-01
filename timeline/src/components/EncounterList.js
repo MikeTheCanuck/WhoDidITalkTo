@@ -31,12 +31,37 @@ class EncounterList extends Component {
   //     });
   // }
 
+  constructor(props){
+    super(props);
+    this.state = {
+    //   encounters: []  
+    encounterz: {}
+    }
+
+    let encountersRef = this.props.db.database().ref('testencounters');
+
+    let _this = this;
+
+    encountersRef.on('value', function(snapshot) {
+      console.log(snapshot.val());
+
+      _this.setState({
+        encounterz: snapshot.val(),
+        loading: false
+      });
+    });
+  } // results in a list of encounterz objects pulled from the 'testencounters' firebase reference
+
+  // TODO: convert encounterz from list to Array
+  // TODO: send encounterz Array members as state to the Encounter component
+  // TODO: refactor encounterz to the App component so it can be shared among all pages
+
   render() {
     const {encounters} = this.props; //ES6 destructuring aka replacing const encounters = this.props.encounters;
 
     return (
       <div className="encounters">
-        <div classname="line"></div>
+        <div className="line"></div>
 
       {/* Timeline item */}
       {encounters.map((encounter) => {
