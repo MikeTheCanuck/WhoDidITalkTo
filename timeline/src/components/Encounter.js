@@ -11,7 +11,7 @@ class Encounter extends Component {
       return (
         <div className="Encounter">
           <div className="Person-image">
-            <img src={encounter.Photo} />
+            <img src={encounter.Photo} alt="" />
           </div>
           <div className="Encounter_data">
             <div className="Encounter-first-row">
