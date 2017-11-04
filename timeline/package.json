@@ -2,6 +2,7 @@
   "name": "timeline",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://whodiditalktotest.firebaseapp.com",
   "dependencies": {
     "firebase": "^4.5.0",
     "package.json": "^2.0.1",
