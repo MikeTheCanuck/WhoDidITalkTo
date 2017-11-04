@@ -1,104 +1,33 @@
-// EncounterList.js
-
-// TODO: refactor encounterz to the App component so it can be shared among all pages
-
-import React, {Component} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import Encounter from './Encounter';
-// import _ from 'lodash';
 
-  class EncounterList extends Component {
-  constructor(props){
-    super(props);
-    this.state = {
-    encounterz: []
-    }
-
-  // const encountersRef = this.props.db.database().ref('testencounters');
-  let encountersRef = this.props.db.database().ref('testencounters');    
-
-  // ATTEMPT #1
-  //
-  // encountersRef.on('value', snapshot => {
-  //   this.getData(snapshot.val());
-  //   });
-  // }
-  // getData(values){
-  //   let encountersVal = values;
-  //   let encounterz = _(encountersVal)
-  //                     .keys()
-  //                     .map(encounterKey => {
-  //                         let cloned = _.clone(encountersVal[encounterKey]);
-  //                         cloned.key = encounterKey;
-  //                         return cloned;
-  //                     })
-  //                     .value();
-  //     this.setState({
-  //       encounterz: encounterz
-  //     });
-  // }
-
-  // ATTEMPT #2
-  //
-  // let _this = this;
-  // encountersRef.on('value', function(snapshot) {
-  //   console.log(snapshot.val());
-
-  //   _this.setState({
-  //     encounterz: snapshot.val(),
-  //     loading: false
-  //   });
-  // });
-
-  // ATTEMPT #3
-  // this pattern copied from https://css-tricks.com/intro-firebase-react/
-  encountersRef.on('value', (snapshot) => {
-    let encounterz = snapshot.val();
-    let newState = [];
-    for (let encounter in encounterz) {
-      newState.push({
-        id: encounter,
-        Person: encounterz[encounter].Name,
-        Date: encounterz[encounter].Date,
-        Event: encounterz[encounter].Event
-      });
-    }
-    this.setState({
-      encounterz: newState
+const EncounterList = props => {
+  const renderEncounters = () => {
+    return props.encounters.map(encounter => {
+      return (
+        <Encounter
+          key={encounter.Name + Math.random()}
+          Name={encounter.Name}
+          Date={encounter.Date}
+          Event={encounter.Event}
+        />
+      );
     });
-  });
-  } // results in a list of encounterz objects pulled from the 'testencounters' firebase reference
+  };
 
-  render() {
-    const {encounters} = this.props; //ES6 destructuring aka replacing const encounters = this.props.encounters;
+  return (
+    <div>
+      <h2>Encounters</h2>
+      {/* Figure out how to get rid of the () for the function call. It's supposed to work
+      as a variable name. */}
+      {renderEncounters()}
+    </div>
+  );
+};
 
-    return (
-      <div className="encounters">
-        <div className="line"></div>
+EncounterList.propTypes = {
+  encounters: PropTypes.array.isRequired,
+};
 
-      {/* Timeline item */}
-      {this.state.encounterz.map((encounter) => {
-        return (
-          <Encounter encounter={encounter} />
-        )
-      }
-      )}
-      </div>            
-    )
-    // let encounterNodes = encounters.map((encounter) => {
-    //   return (
-    //     <div className="card">
-    //       <div className="card-content">
-    //         <Encounter encounter = {encounter.encounter} />
-    //       </div>
-    //     </div>
-    //   )
-    // });
-    // return (
-    //   <div>
-    //     {encounterNodes}
-    //   </div>
-    // );
-  }
-}
-
-export default EncounterList
+export default EncounterList;
