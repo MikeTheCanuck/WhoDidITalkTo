@@ -1,0 +1,81 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 75px;
+  padding: 20px;
+  color: white;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* .Person-image {
+  float: left
+}
+
+.Person-name {
+  float: left;
+  padding: 10px
+}
+
+.Encounter-date {
+  float: left;
+  padding: 10px
+}
+
+.Encounter-event {
+  float: left;
+  padding: 10px
+}
+
+.Encounter-first-row {
+  background: white
+}
+
+.Encounter-second-row {
+  background: lightgrey
+}
+
+.Encounter-first-row:after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+.Encounter-second-row:after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+.Encounter_data {
+  padding: 10px
+} */
+
+/* Three column definition for encounters  */
+
+.Person-image {
+  width: 30%
+}
+
+.Encounter_data {
+  width: 60%
+}
+
+.Encounter-navigation {
+  width: 10%
+}

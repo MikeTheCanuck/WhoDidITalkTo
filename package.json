@@ -1,0 +1,20 @@
+{
+  "name": "timeline",
+  "version": "0.1.0",
+  "private": true,
+  "homepage": "https://whodiditalktotest.firebaseapp.com",
+  "dependencies": {
+    "axios": "^0.17.0",
+    "firebase": "^4.5.0",
+    "package.json": "^2.0.1",
+    "react": "^15.6.2",
+    "react-dom": "^15.6.2",
+    "react-scripts": "^1.0.13"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
