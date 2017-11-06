@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://whodiditalktotest.firebaseapp.com",
   "dependencies": {
+    "axios": "^0.17.0",
     "firebase": "^4.5.0",
     "package.json": "^2.0.1",
     "react": "^15.6.2",
