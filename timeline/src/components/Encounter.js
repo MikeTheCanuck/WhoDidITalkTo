@@ -27,11 +27,13 @@ Encounter.propTypes = {
   photo: PropTypes.string,
   Date: PropTypes.string.isRequired,
   Event: PropTypes.string,
+  Location: PropTypes.string.isRequired,
 };
 
 Encounter.defaultTypes = {
-  photo: '',
+  photo: '../../../assets/avatar_placeholder.jpg',
   Event: 'n/a',
+  Location: 'n/a',
 };
 
 export default Encounter;
