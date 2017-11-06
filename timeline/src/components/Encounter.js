@@ -27,7 +27,7 @@ Encounter.propTypes = {
   photo: PropTypes.string,
   Date: PropTypes.string.isRequired,
   Event: PropTypes.string,
-  Location: PropTypes.string.isRequired,
+  Location: PropTypes.string,
 };
 
 Encounter.defaultTypes = {
