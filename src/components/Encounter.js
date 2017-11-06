@@ -31,7 +31,7 @@ Encounter.propTypes = {
 };
 
 Encounter.defaultTypes = {
-  photo: '../../../assets/avatar_placeholder.jpg',
+  photo: '',
   Event: 'n/a',
   Location: 'n/a',
 };
