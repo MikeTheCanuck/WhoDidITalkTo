@@ -1,0 +1,13 @@
+// App/firebase-config.js
+// lifted with pride from https://dev.codetrick.net/how-to-create-a-reddit-clone-using-react-and-firebase/
+
+// replace all ALLCAPS words with your specific values
+
+export default {
+    apiKey: "APIKEY",
+    authDomain: "DOMAIN.firebaseapp.com",
+    databaseURL: "https://DATABASE.firebaseio.com",
+    projectId: "PROJECTID",
+    storageBucket: "STORAGE.appspot.com",
+    messagingSenderId: "SENDERID"
+};
