@@ -13,6 +13,8 @@ const EncounterList = props => {
           Name={encounter.Name}
           Date={encounter.Date}
           Event={encounter.Event}
+          Location={encounter.Location}
+          Photo={encounter.Photo}
         />
       );
     });
