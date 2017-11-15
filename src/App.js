@@ -3,7 +3,6 @@ import './App.css';
 import firebase from './firebase-config';
 import EncounterList from './components/EncounterList';
 import NewEncounter from './components/NewEncounter';
-// import API from './util/api';
 
 class App extends Component {
   state = {
@@ -18,14 +17,6 @@ class App extends Component {
   }
 
   fetchEncounters = () => {
-    // API.get()
-    //    .then(response => {
-    //      this.setState({
-    //        encounters: Object.values(response.data), // this is intended to simplify handling of the data by passing it directly to the EncounterList component as an array
-    //       });
-    //     }
-    //   );
-
     // TODO: consolidate this and the NewEncounter component's declarations of the same object
     const itemsRef = firebase.database().ref('testencounters');
 
