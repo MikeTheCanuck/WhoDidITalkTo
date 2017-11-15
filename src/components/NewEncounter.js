@@ -40,7 +40,11 @@ class NewEncounter extends Component {
     }
     itemsRef.push(item);
     this.setState({
-      fullname: ''
+      fullname: '',
+      date: '',
+      event: '',
+      location: '',
+      topics: ''
     })
   }
 
@@ -52,6 +56,26 @@ class NewEncounter extends Component {
                placeholder="What's their full name?"
                onChange={this.handleChange}
                value={this.state.fullname} /* without this, textbox doesn't clear on submit */ />
+        <input type="text" 
+               name="date"
+               placeholder="When did you meet?"
+               onChange={this.handleChange}
+               value={this.state.date} /* without this, textbox doesn't clear on submit */ />
+        <input type="text" 
+               name="event"
+               placeholder="At what event (optional)?"
+               onChange={this.handleChange}
+               value={this.state.event} /* without this, textbox doesn't clear on submit */ />
+        <input type="text" 
+               name="location"
+               placeholder="At what place (optional)?"
+               onChange={this.handleChange}
+               value={this.state.location} /* without this, textbox doesn't clear on submit */ />
+        <input type="text" 
+               name="topics"
+               placeholder="What did you talk about (optional)?"
+               onChange={this.handleChange}
+               value={this.state.topics} /* without this, textbox doesn't clear on submit */ />
         <button>Add Encounter</button>
       </form>
     )
