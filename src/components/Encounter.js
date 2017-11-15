@@ -9,7 +9,7 @@ const Encounter = props => {
       </div>
       <div className="Encounter_data">
         <div className="Encounter-first-row">
-          <div className="Person-name">Who: {props.Name}</div>
+          <div className="Person-name">Who: {props.Person}</div>
           <div className="Encounter-date">When: {props.Date}</div>
         </div>
         <div className="Encounter-second-row">
@@ -24,7 +24,7 @@ const Encounter = props => {
 };
 
 Encounter.propTypes = {
-  Name: PropTypes.string.isRequired,
+  Person: PropTypes.string.isRequired,
   Photo: PropTypes.string,
   Date: PropTypes.string.isRequired,
   Event: PropTypes.string,

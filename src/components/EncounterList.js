@@ -9,8 +9,8 @@ const EncounterList = props => {
       // multiple returns appear to be necessary for the elements of the component to get rendered
       return (
         <Encounter
-          key={encounter.Name + Math.random()} // is necessary to have a unique key for React to handle the component successfully
-          Name={encounter.Name}
+          key={encounter.Person + Math.random()} // is necessary to have a unique key for React to handle the component successfully
+          Person={encounter.Person}
           Date={encounter.Date}
           Event={encounter.Event}
           Location={encounter.Location}
