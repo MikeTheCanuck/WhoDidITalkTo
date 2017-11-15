@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import './App.css';
 import API from './util/api';
 import EncounterList from './components/EncounterList';
+import firebase from './firebase-config';
 
 class App extends Component {
   state = {
     encounters: [],
-    Name: '',
+    fullname: '',
   };
 
 /* TODO: research why initializing state variables doesn't have to be in the constructor(), and if the same 
@@ -14,9 +15,12 @@ class App extends Component {
   constructor() {
     super();
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  // Kyle advises this stage of the component lifecycle is preferable to the constructor stage, to access a data layer
+  /* Kyle advises this stage of the component lifecycle is preferable to the constructor stage, 
+     to pull data from the data layer, as it enables the app to display skeletal UI while 
+     the data is retrieved and properly formulated */
   componentDidMount() {
     this.fetchEncounters();
   }
@@ -31,10 +35,26 @@ class App extends Component {
       );
   };
 
-  handleChange(stateValue) {
+  handleChange(e) {
+    /* Takes the named control e.g. name="fullname"
+       and sets the state variable with the same name
+       to the value of the input submitted so far by the time this event fires */
     this.setState({
-      [stateValue.target.name]: stateValue.target.value
+      [e.target.name]: e.target.value
     });
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    const itemsRef = firebase.database().ref('items');
+    // record to be pushed has key-value pairs of "name of firebase field": "value of that field"
+    const item = {
+      Name: this.state.fullname
+    }
+    itemsRef.push(item);
+    this.setState({
+      fullname: ''
+    })
   }
 
   render() {
@@ -44,11 +64,12 @@ class App extends Component {
           <h1>Timeline</h1>
         </div>
         <div className="NewEncounter">
-          <form>
-            <input type="text" name="Name"
-                   placeholder="What's their name?"
-                   onChange={this.handleChange} 
-                   value={this.state.username} />
+          <form onSubmit={this.handleSubmit}>
+            <input type="text" 
+                   name="fullname"
+                   placeholder="What's their full name?"
+                   onChange={this.handleChange}
+                   value={this.state.fullname} /* without this, textbox doesn't clear on submit */ />
             <button>Add Encounter</button>
           </form>
         </div>
