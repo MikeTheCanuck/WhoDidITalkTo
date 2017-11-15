@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
 import './App.css';
-import API from './util/api';
+import firebase from './firebase-config';
 import EncounterList from './components/EncounterList';
+import NewEncounter from './components/NewEncounter';
+import API from './util/api';
 
 class App extends Component {
   state = {
     encounters: [],
   };
 
-  // Kyle advises this stage of the component lifecycle is preferable to the constructor stage, to access a data layer
+  /* Kyle advises this stage of the component lifecycle is preferable to the constructor stage, 
+     to pull data from the data layer, as it enables the app to display skeletal UI while 
+     the data is retrieved and properly formulated */
   componentDidMount() {
     this.fetchEncounters();
   }
@@ -28,6 +32,9 @@ class App extends Component {
       <div className="App">
         <div className="App-header">
           <h1>Timeline</h1>
+        </div>
+        <div className="NewEncounter">
+          <NewEncounter db={firebase}/>
         </div>
         <div className="Timeline">
           <EncounterList encounters={this.state.encounters} />
