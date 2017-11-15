@@ -1,9 +1,11 @@
 // App/firebase-config.js
 // lifted with pride from https://dev.codetrick.net/how-to-create-a-reddit-clone-using-react-and-firebase/
 
+import firebase from 'firebase'
+
 // replace all ALLCAPS words with your specific values
 
-export default {
+const config = {
     apiKey: "APIKEY",
     authDomain: "DOMAIN.firebaseapp.com",
     databaseURL: "https://DATABASE.firebaseio.com",
@@ -11,3 +13,6 @@ export default {
     storageBucket: "STORAGE.appspot.com",
     messagingSenderId: "SENDERID"
 };
+
+firebase.initializeApp(config);
+export default firebase;
