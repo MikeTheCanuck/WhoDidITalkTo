@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import API from './util/api';
 import EncounterList from './components/EncounterList';
+import NewEncounter from './components/NewEncounter';
 import firebase from './firebase-config';
 
 class App extends Component {
@@ -64,14 +65,7 @@ class App extends Component {
           <h1>Timeline</h1>
         </div>
         <div className="NewEncounter">
-          <form onSubmit={this.handleSubmit}>
-            <input type="text" 
-                   name="fullname"
-                   placeholder="What's their full name?"
-                   onChange={this.handleChange}
-                   value={this.state.fullname} /* without this, textbox doesn't clear on submit */ />
-            <button>Add Encounter</button>
-          </form>
+          <NewEncounter db={firebase}/>
         </div>
         <div className="Timeline">
           <EncounterList encounters={this.state.encounters} />
