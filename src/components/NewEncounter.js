@@ -32,7 +32,7 @@ class NewEncounter extends Component {
     const itemsRef = this.props.db.database().ref('testencounters');
     // record to be pushed has key-value pairs of "name of firebase field": "value of that field"
     const item = {
-      Person: this.state.fullname,
+      Name: this.state.fullname,
       Date: this.state.date,
       Event: this.state.event,
       Location: this.state.location,
