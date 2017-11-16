@@ -1,24 +1,41 @@
 import React, { Component } from 'react';
 import './App.css';
-import firebase from './firebase-config';
+import firebase, {auth, provider} from './firebase-config';
 import EncounterList from './components/EncounterList';
 import NewEncounter from './components/NewEncounter';
 
 class App extends Component {
-  state = {
-    encounters: [],
-  };
+  // state = {
+  //   encounters: [],
+  // };
 
-  /* Kyle advises this stage of the component lifecycle is preferable to the constructor stage, 
-     to pull data from the data layer, as it enables the app to display skeletal UI while 
-     the data is retrieved and properly formulated */
+  constructor() {
+    super();
+    this.state = {
+      user: null,
+      encounters: [],
+    }
+    this.login = this.login.bind(this);
+    this.logout = this.logout.bind(this);
+  }
+
   componentDidMount() {
+    // Persists the logged-in state across page refreshes
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        this.setState({ user });
+      }
+    });
+
+    /* Kyle advises this stage of the component lifecycle is preferable to the constructor stage, 
+       to pull data from the data layer, as it enables the app to display skeletal UI while 
+       the data is retrieved and properly formulated */
     this.fetchEncounters();
   }
 
   fetchEncounters = () => {
     // TODO: consolidate this and the NewEncounter component's declarations of the same object
-    const itemsRef = firebase.database().ref('testencounters');
+    const itemsRef = firebase.database().ref('encounters');
 
     itemsRef.on('value', (snapshot) => {
       console.log(snapshot.val());
@@ -40,18 +57,48 @@ class App extends Component {
     });
   };
 
+  login() {
+    auth.signInWithPopup(provider)
+      .then((result) => {
+        const user=result.user;
+        this.setState({
+          user
+        });
+      });
+  }
+
+  logout() {
+    auth.signOut()
+      .then(() => {
+        this.setState({
+          user: null
+        });
+      });
+  }
+
   render() {
     return (
       <div className="App">
         <div className="App-header">
           <h1>Timeline</h1>
+          {this.state.user ?
+            <button onClick={this.logout}>Log Out</button>
+            :
+            <button onClick={this.login}>Log In</button>
+          }
         </div>
         <div className="NewEncounter">
           <NewEncounter db={firebase}/>
         </div>
-        <div className="Timeline">
-          <EncounterList encounters={this.state.encounters} />
-        </div>
+        {this.state.user ?
+          <div className="Timeline">
+            <EncounterList encounters={this.state.encounters} />
+          </div>
+          :
+          <div className="wrapper">
+            <p>Unless you're logged in, you don't get to see the data</p>
+          </div>
+        }
       </div>
     );
   }
