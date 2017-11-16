@@ -1,9 +1,12 @@
 // App/firebase-config.js
 // lifted with pride from https://dev.codetrick.net/how-to-create-a-reddit-clone-using-react-and-firebase/
 
-import firebase from 'firebase'
+// Instructions:
+// 1. Make a copy of this file and name it firebase-config.js
+// 2. Replace all ALLCAPS values with the specific values you see in Firebase Project Overview, 
+//    when you click "Add Firebase to your web app".
 
-// replace all ALLCAPS words with your specific values
+import firebase from 'firebase'
 
 const config = {
     apiKey: "APIKEY",
@@ -15,4 +18,8 @@ const config = {
 };
 
 firebase.initializeApp(config);
+
+export const provider = new firebase.auth.GoogleAuthProvider();
+export const auth = firebase.auth();
+
 export default firebase;
