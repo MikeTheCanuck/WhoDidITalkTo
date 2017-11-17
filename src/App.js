@@ -87,12 +87,14 @@ class App extends Component {
             <button onClick={this.login}>Log In</button>
           }
         </div>
-        <div className="NewEncounter">
-          <NewEncounter db={firebase}/>
-        </div>
         {this.state.user ?
-          <div className="Timeline">
-            <EncounterList encounters={this.state.encounters} />
+          <div className="wrapper">
+            <div className="NewEncounter">
+              <NewEncounter db={firebase}/>
+            </div>
+            <div className="Timeline">
+              <EncounterList encounters={this.state.encounters} />
+            </div>
           </div>
           :
           <div className="wrapper">
