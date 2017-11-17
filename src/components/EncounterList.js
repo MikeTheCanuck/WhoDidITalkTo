@@ -15,6 +15,7 @@ const EncounterList = props => {
           Event={encounter.Event}
           Location={encounter.Location}
           Photo={encounter.Photo}
+          Topics={encounter.Topics}
         />
       );
     });

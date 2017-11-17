@@ -15,6 +15,7 @@ const Encounter = props => {
         <div className="Encounter-second-row">
           <div className="Encounter-event">Event: {props.Event}</div>
           <div className="Encounter-location">Location: {props.Location}</div>
+          <div className="Encounter-topics">Topics: {props.Topics}</div>
         </div>
       </div>
 

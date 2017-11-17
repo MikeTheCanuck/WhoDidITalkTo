@@ -46,6 +46,7 @@ class App extends Component {
           id: encounter,
           Date: encounterz[encounter].Date,
           Person: encounterz[encounter].Person,
+          Photo: encounterz[encounter].Photo,
           Event: encounterz[encounter].Event,
           Location: encounterz[encounter].Location,
           Topics: encounterz[encounter].Topics
