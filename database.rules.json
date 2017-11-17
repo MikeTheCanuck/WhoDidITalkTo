@@ -1,8 +1,8 @@
 {
   "rules": {
-//    ".read": "auth != null",
-//    ".write": "auth != null"
-    ".read": "true",
-    ".write": "true"
+    ".read": "auth != null",
+    ".write": "auth != null"
+//    ".read": "true",
+//    ".write": "true"
   }
 }
