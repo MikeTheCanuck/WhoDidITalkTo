@@ -1,28 +1,73 @@
 # remember-who-I-talked-to
+
 Who did I meet at that meetup last year?  Where did I see that person, and what did we talk about?
 
-This will eventually help Mike answer the question, "Where did I meet you?" without looking like an ass by asking the person I'm talking to.
+This will eventually help Mike answer the question, "Where did I meet you?" without looking like an ass by asking the person I'm talking to who they are.
 
-# React setup
-Here's how I got my fresh-installed machine setup for working with React:
-```
+# Are you running this app, or writing code to develop this app?
+
+1. If you're merely running a copy of this app for your own usage, look at the [Setup to run](#Setup-to-run-your-own-instance-of-this-app).
+2. If you're going to add or change code in the app - either for your own use, or to contribute a PR (pull request) to the project, look at the [Setup for dev](#Setup-for-ongoing-development).
+
+## Setup to run your own instance of this app
+
+### First-time installation of this app
+
+I've built this app assuming there's only a single user.  Since the infrastructure is free, and my primary objective is to help myself, this was a reasonable starting assumption.
+
+However, if you're feeling brave/stupid enough to try this on your own, here's how to get an instance going on the latest commit that's on the master branch:
+
+1. Launch a command-line session (e.g. `Terminal` on a Mac)
+2. Install NPM, git, firebase CLI and react-scripts tools.
+3. Get an account on Google's Firebase (https://console.firebase.google.com/) and Add a new project to host this app and its data.
+4. (Fork and) clone this repo:
+- 1. Browse to the project (mine or your fork) and click the "Clone or download" button.
+- 2. Click the clipboard icon.
+- 3. Open your command-line session, `cd` to the folder you want to put this code in and type `git clone ` and then paste the contents of your clipboard.
+5. Run `cd WhoDidITalkTo`.
+6. Run `cp src/firebase-config.js.sample src/firebase-config.js`.
+7. Edit `firebase-config.js` and replace the ALLCAPS placeholders - use the actual values you see when you browse to your new Firebase project and click on "Add Firebase to your web app".
+8. Run `firebase init`, choose "Database" and "Hosting", then select defaults for **Database Rules**, **public directory** and **single-page app**.
+9. Edit `.firebaserc` and change the Project default name from `whodiditalkto` to match the name you gave it when setting up your new Firebase project.
+
+(Figure out the best way for others to get `react-scripts` on their machine.)
+
+Run `yarn build`
+Run `firebase deploy`
+Browse to your newly-deployed app and enjoy!
+
+### Synchronize app with updated code
+
+If you've previously deployed the app, and you'd like to deploy a fresher version of the code with new features or bug fixes, here's what you should do:
+1. Fire up 
+2. 
+
+## Setup for ongoing development
+
+Here's how I got my fresh-installed machine setup for initializing a new React app:
+
+``` shell
 (installed homebrew for my Mac) /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-brew install npm 
+brew install npm
 brew install git
 cd timeline
 npm install -g create-react-app
 ```
 
-For you who fork or clone this repo, but already have experience with other GitHub projects, all you should need to do is:
+For those of you who fork or clone this repo, to be able to build test and run the app :
 
-```
-cd timeline
-npm install
+``` shell
+brew install yarn
+cd WhoDidITalkTo
+yarn install
 ```
 
-I can't guarantee every step is necessary to run this app, but that sequence *did* make it possible for me, after a fresh OS X install.
+Note: I am gravitating to using Yarn as this project's official Node package manager, so only the `yarn.lock` is guaranteed to capture the dependency versions I'm using.  The `package-lock.json` from previous `npm` usage is still lingering, but I'm not slavishly maintaining it, and I'll likely remove it once I'm fully comfortable about the relationship between `yarn` and `npm` (starting with [this article](https://www.sitepoint.com/yarn-vs-npm/)).
+
+Also note: I can't guarantee every step is necessary to run this app, but that sequence *did* make it possible for me, after a fresh OS X install.
 
 ## Resources I used in building this code
+
 * https://facebook.github.io/react/tutorial/tutorial.html
 * https://facebook.github.io/react/
 * https://www.codetutorial.io/reactjs-tutorial-instagram/
