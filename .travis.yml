@@ -5,7 +5,8 @@ node_js:
 - '6'
 - '6.1'
 after_success:
-- npm run test:cover:travis
+#- npm run test:cover:travis
+- yarn test
 script:
 #- npm run build
 - yarn build
