@@ -7,4 +7,5 @@ node_js:
 after_success:
 - npm run test:cover:travis
 script:
-- npm run build
+#- npm run build
+- yarn build
