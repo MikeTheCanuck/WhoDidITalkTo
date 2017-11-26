@@ -24,18 +24,20 @@ class App extends Component {
     auth.onAuthStateChanged((user) => {
       if (user) {
         this.setState({ user });
+
+        /* Kyle advises this stage of the component lifecycle is preferable to the constructor stage, 
+        to pull data from the data layer, as it enables the app to display skeletal UI while 
+        the data is retrieved and properly formulated */
+        /* I'm pulling the fetchEncounters() call into this if {} because that's the only way I can figure out 
+        how to access the "user" object */
+        this.fetchEncounters(user);
       }
     });
-
-    /* Kyle advises this stage of the component lifecycle is preferable to the constructor stage, 
-       to pull data from the data layer, as it enables the app to display skeletal UI while 
-       the data is retrieved and properly formulated */
-    this.fetchEncounters();
   }
 
-  fetchEncounters = () => {
+  fetchEncounters = (user) => {
     // TODO: consolidate this and the NewEncounter component's declarations of the same object
-    const itemsRef = firebase.database().ref('encounters');
+    const itemsRef = firebase.database().ref('encounters/' + user.uid);
 
     itemsRef.on('value', (snapshot) => {
       console.log(snapshot.val());

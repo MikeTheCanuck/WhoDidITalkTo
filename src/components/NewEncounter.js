@@ -14,7 +14,7 @@ class NewEncounter extends Component {
   constructor() {
     super();
     this.handleChange = this.handleChange.bind(this);
-     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(e) {
@@ -28,7 +28,7 @@ class NewEncounter extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const itemsRef = this.props.db.database().ref('encounters');
+    const itemsRef = this.props.db.database().ref('encounters/' + this.props.db.auth().currentUser.uid);
     // record to be pushed has key-value pairs of "name of firebase field": "value of that field"
     const item = {
       Person: this.state.fullname,
