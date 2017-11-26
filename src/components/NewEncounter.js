@@ -28,10 +28,7 @@ class NewEncounter extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    // 2017-11-22: figured out how to write to a uid-specific branch of the JSON data
-    //   but I don't know how to read this data back in App.js
-    const userId = this.props.db.auth().currentUser.uid;
-    const itemsRef = this.props.db.database().ref('encounters/' + userId);
+    const itemsRef = this.props.db.database().ref('encounters/' + this.props.db.auth().currentUser.uid);
     // record to be pushed has key-value pairs of "name of firebase field": "value of that field"
     const item = {
       Person: this.state.fullname,
