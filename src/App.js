@@ -14,7 +14,7 @@ class App extends Component {
     this.state = {
       user: null,
       encounters: [],
-    }    
+    }
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
   }
