@@ -70,17 +70,28 @@ Note: I am gravitating to using Yarn as this project's official Node package man
 
 I have implemented build, test and deploy using TravisCI such that every commit to `master` will deploy any "tests-passing build" to my own Firebase project's Hosting environment.  It more or less follows [this article](https://codeburst.io/learning-travis-ci-with-firebase-react-part-2-28a131913e28), but with the following changes:
 * don't have to explicitly install `yarn` in the Travis environment (no `install` step in `.travis.yml` - this is now automatic in a Travis project)
-* must install Travis CLI tools to be able to generate the Travis login token
-* must generate the Travis login token and encrypt it - see [this article](https://docs.travis-ci.com/user/deployment/firebase/) for a full description of the steps:
+* must generate the Travis login token and configure it as a Travis environment variable - see [this article](https://docs.travis-ci.com/user/deployment/firebase/) for a related implementation:
 ```
 firebase login:ci
-gem install travis -v 1.8.8 --no-rdoc --no-ri
-travis encrypt...
 ```
-* once you have the `env: global: secure: ...` added to the `.travis.yml`, you can either copy the encrypted token overtop the FIREBASE_TOKEN environment variable in that file, or you can go to your Travis CI > (Project) > Settings and add an Environment Variable named "FIREBASE_TOKEN" (and leave the setting "Display value in build log" as off, so no one else gets a chance to monkey with your deployed application)
-* (todo: switch from Travis token hard-coded in the `.travis.yml` to importing it as an env var (NOT displayed in Travis build logs), so that others don't accidentally deploy their fork of my code to my Firebase Hosting environment)
+* This will return output similar to the following:
+```
+$ firebase login:ci
 
-If you wish to make your own changes in a fork and automatically deploy each change (e.g. all merges to `master`) then you can perform the same setup for your own [Travis project](https://travis-ci.org).
+Visit this URL on any device to log in:
+https://accounts.google.com/o/oauth2/auth?client_id=long-unique-string.apps.googleusercontent.com&scope=email%20openid%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcloudplatformprojects.readonly%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Ffirebase%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcloud-platform&response_type=code&state=lotsofnumbers&redirect_uri=http%3A%2F%2Flocalhost%3A8001
+
+Waiting for authentication...
+
+✔  Success! Use this token to login on a CI server:
+
+1/1GwC5440OhH2OBMWisanexpensivecar
+
+Example: firebase deploy --token "$FIREBASE_TOKEN"
+```
+* copied that token value (e.g. "1/1GwC5440OhH2OBMWisanexpensivecar" in my example) and login to my TravisCI project, select Settings, and create a new Environment Variable named FIREBASE_TOKEN with this token value as the "Value" data (and don't change the "Display value in build log" setting so that it remains OFF)
+
+If you wish to make your own source code changes in a fork and automatically deploy each change to your Firebase project (e.g. deploy each merge to `master`) then you can perform the same setup for your own [Travis project](https://travis-ci.org).
 
 ## Resources I used in building this code
 
