@@ -2,7 +2,7 @@
   "name": "timeline",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://whodiditalktotest.firebaseapp.com",
+  "homepage": "https://whodiditalkto.firebaseapp.com",
   "dependencies": {
     "axios": "^0.17.0",
     "firebase": "^4.5.0",
