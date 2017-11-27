@@ -4,14 +4,14 @@ Who did I meet at that meetup last year?  Where did I see that person, and what 
 
 This will eventually help Mike answer the question, "Where did I meet you?" without looking like an ass by asking the person I'm talking to who they are.
 
-# Are you running this app, or writing code to develop this app?
+## Are you running this app, or writing code to develop this app?
 
 1. If you're merely running a copy of this app for your own usage, look at the [Setup to run](#Setup-to-run-your-own-instance-of-this-app).
 2. If you're going to add or change code in the app - either for your own use, or to contribute a PR (pull request) to the project, look at the [Setup for dev](#Setup-for-ongoing-development).
 
 ## Setup to run your own instance of this app
 
-### First-time installation of this app
+### First-time deployment of this app
 
 I've built this app assuming there's only a single user.  Since the infrastructure is free, and my primary objective is to help myself, this was a reasonable starting assumption.
 
@@ -39,8 +39,10 @@ Browse to your newly-deployed app and enjoy!
 ### Synchronize app with updated code
 
 If you've previously deployed the app, and you'd like to deploy a fresher version of the code with new features or bug fixes, here's what you should do:
-1. Fire up 
-2. 
+1. Fire up a Terminal environment (`Terminal` on a Mac, `Git Shell` or equivalent on a Windows box; you Linux geeks already know what to do) and `cd` to the directory where the code is installed (e.g. `cd ~/code/WhoDidITalkTo`)
+2. (configure this repo as upstream)
+3. (git pull upstream...)
+4. (yarn build, firebase deploy)
 
 ## Setup for ongoing development
 
@@ -54,7 +56,7 @@ cd timeline
 npm install -g create-react-app
 ```
 
-For those of you who fork or clone this repo, to be able to build test and run the app :
+For those of you who fork or clone this repo, if you want to be able to build, test and run the app then perform these steps:
 
 ``` shell
 brew install yarn
@@ -64,7 +66,21 @@ yarn install
 
 Note: I am gravitating to using Yarn as this project's official Node package manager, so only the `yarn.lock` is guaranteed to capture the dependency versions I'm using.  The `package-lock.json` from previous `npm` usage is still lingering, but I'm not slavishly maintaining it, and I'll likely remove it once I'm fully comfortable about the relationship between `yarn` and `npm` (starting with [this article](https://www.sitepoint.com/yarn-vs-npm/)).
 
-Also note: I can't guarantee every step is necessary to run this app, but that sequence *did* make it possible for me, after a fresh OS X install.
+## Setup for ongoing deployment
+
+I have implemented build, test and deploy using TravisCI such that every commit to `master` will deploy any "tests-passing build" to my own Firebase project's Hosting environment.  It more or less follows [this article](https://codeburst.io/learning-travis-ci-with-firebase-react-part-2-28a131913e28), but with the following changes:
+* don't have to explicitly install `yarn` in the Travis environment (no `install` step in `.travis.yml` - this is now automatic in a Travis project)
+* must install Travis CLI tools to be able to generate the Travis login token
+* must generate the Travis login token and encrypt it - see [this article](https://docs.travis-ci.com/user/deployment/firebase/) for a full description of the steps:
+```
+firebase login:ci
+gem install travis -v 1.8.8 --no-rdoc --no-ri
+travis encrypt...
+```
+* once you have the `env: global: secure: ...` added to the `.travis.yml`, you can either copy the encrypted token overtop the FIREBASE_TOKEN environment variable in that file, or you can go to your Travis CI > (Project) > Settings and add an Environment Variable named "FIREBASE_TOKEN" (and leave the setting "Display value in build log" as off, so no one else gets a chance to monkey with your deployed application)
+* (todo: switch from Travis token hard-coded in the `.travis.yml` to importing it as an env var (NOT displayed in Travis build logs), so that others don't accidentally deploy their fork of my code to my Firebase Hosting environment)
+
+If you wish to make your own changes in a fork and automatically deploy each change (e.g. all merges to `master`) then you can perform the same setup for your own [Travis project](https://travis-ci.org).
 
 ## Resources I used in building this code
 
@@ -76,3 +92,4 @@ Also note: I can't guarantee every step is necessary to run this app, but that s
 * https://dev.codetrick.net/how-to-create-a-reddit-clone-using-react-and-firebase/
 * https://css-tricks.com/intro-firebase-react/
 * https://css-tricks.com/firebase-react-part-2-user-authentication/
+* https://codeburst.io/learning-travis-ci-with-firebase-react-part-2-28a131913e28
