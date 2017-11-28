@@ -3,6 +3,10 @@ import PropTypes from 'prop-types';
 import Encounter from './Encounter';
 
 const EncounterList = props => {
+  /* TODO: sort the encounters array as it's being read from Props
+     (rather than sort it before it's sent down through App.js)
+  */
+
   // this binding pattern is preferable to others, mentioned here: https://medium.freecodecamp.org/react-binding-patterns-5-approaches-for-handling-this-92c651b5af56
   const renderEncounters = () => {
     return props.encounters.map(encounter => {
