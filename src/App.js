@@ -37,8 +37,10 @@ class App extends Component {
 
   fetchEncounters = (user) => {
     // TODO: consolidate this and the NewEncounter component's declarations of the same object
-    const itemsRef = firebase.database().ref('encounters/' + user.uid);
 
+    // const itemsRef = firebase.database().ref('encounters/' + user.uid);
+    let itemsRef = firebase.database().ref('encounters/2aUrEuS9DYV3WTMn4fDDVI2xc6s1').orderByChild('Date').equalTo('2017-11-03');
+    
     itemsRef.on('value', (snapshot) => {
       console.log(snapshot.val());
       let encounterz = snapshot.val();
