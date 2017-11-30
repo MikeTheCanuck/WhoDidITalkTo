@@ -60,7 +60,7 @@ class NewEncounter extends Component {
                   value={this.state.fullname} /* without this, textbox doesn't clear on submit */ />
           </Row>
           <Row>
-            <input type="text" 
+            <input type="date" 
                   name="date"
                   placeholder="When did you meet?"
                   onChange={this.handleChange}
