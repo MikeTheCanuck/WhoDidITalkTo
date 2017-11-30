@@ -6,43 +6,34 @@ const Encounter = props => {
   return (
     <div className="Encounter">
       <Grid>
-        <Col xs={3}>
-          <div className="Person-image">
-            <img src={props.Photo} alt="" />
-          </div>
-        </Col>
-        <Col xs={9}>
-          <div className="Encounter-data">
-            <Row>
-              <div className="Encounter-first-row">
-                <Col xs={6}>
-                {/* <div className="Person-name">Who: {props.Person}</div> */}
+        <div className="Encounter-data">
+          <Row>
+            <Col xs={2}>
+              <div className="Person-image">
+                <img src={props.Photo} alt="" />
+              </div>
+            </Col>
+              <Col xs={5}>
+                <Row>
                   <div className="Person-name">{props.Person}</div>
-                </Col>
-                <Col xs={6}>
-                  {/* <div className="Encounter-date">When: {props.Date}</div> */}
+                </Row>
+                <Row>
                   <div className="Encounter-date">{props.Date}</div>
-                </Col>
-              </div>
-            </Row>
-            <Row>
-              <div className="Encounter-second-row">
-                <Col xs={6}>
-                  {/* <div className="Encounter-event">Event: {props.Event}</div> */}
+                </Row>
+              </Col>
+              <Col xs={5}>
+                <Row>
                   <div className="Encounter-event">{props.Event}</div>
-                </Col>
-                <Col xs={6}>
-                  {/* <div className="Encounter-location">Location: {props.Location}</div> */}
+                </Row>
+                <Row>
                   <div className="Encounter-location">{props.Location}</div>
-                </Col>
-              </div>
-            </Row>
-            <Row>
-              <div className="Encounter-topics">Topics: {props.Topics}</div>
-            </Row>
-          </div>
-        </Col>
-      {/* <div className="Encounter-topics">Topics: {props.Topics}</div> */}
+                </Row>
+              </Col>
+          </Row>
+          <Row>
+            <div className="Encounter-topics">Topics: {props.Topics}</div>
+          </Row>
+        </div>
       </Grid>
       <hr />
     </div>
