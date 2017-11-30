@@ -23,6 +23,20 @@
   to { transform: rotate(360deg); }
 }
 
+/* Encounter component */
+
+.Encounter-data {
+  text-align: left;
+}
+
+.Encounter-topics {
+  font-style: italic;
+}
+
+.Person-image img {
+  width: 75px;
+}
+
 /* .Person-image {
   float: left
 }
