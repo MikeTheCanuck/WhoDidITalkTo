@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Col, Row} from 'react-bootstrap';
 
 class NewEncounter extends Component {
   state = {
@@ -50,32 +51,46 @@ class NewEncounter extends Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <input type="text" 
-               name="fullname"
-               placeholder="What's their full name?"
-               onChange={this.handleChange}
-               value={this.state.fullname} /* without this, textbox doesn't clear on submit */ />
-        <input type="text" 
-               name="date"
-               placeholder="When did you meet?"
-               onChange={this.handleChange}
-               value={this.state.date} /* without this, textbox doesn't clear on submit */ />
-        <input type="text" 
-               name="event"
-               placeholder="At what event (optional)?"
-               onChange={this.handleChange}
-               value={this.state.event} /* without this, textbox doesn't clear on submit */ />
-        <input type="text" 
-               name="location"
-               placeholder="At what place (optional)?"
-               onChange={this.handleChange}
-               value={this.state.location} /* without this, textbox doesn't clear on submit */ />
-        <input type="text" 
-               name="topics"
-               placeholder="What did you talk about (optional)?"
-               onChange={this.handleChange}
-               value={this.state.topics} /* without this, textbox doesn't clear on submit */ />
-        <button>Add Encounter</button>
+        <Col>
+          <Row>
+            <input type="text" 
+                  name="fullname"
+                  placeholder="What's their full name?"
+                  onChange={this.handleChange}
+                  value={this.state.fullname} /* without this, textbox doesn't clear on submit */ />
+          </Row>
+          <Row>
+            <input type="date" 
+                  name="date"
+                  placeholder="When did you meet?"
+                  onChange={this.handleChange}
+                  value={this.state.date} /* without this, textbox doesn't clear on submit */ />
+          </Row>
+          <Row>
+            <input type="text" 
+                  name="event"
+                  placeholder="At what event (optional)?"
+                  onChange={this.handleChange}
+                  value={this.state.event} /* without this, textbox doesn't clear on submit */ />
+          </Row>
+          <Row>
+            <input type="text" 
+                  name="location"
+                  placeholder="At what place (optional)?"
+                  onChange={this.handleChange}
+                  value={this.state.location} /* without this, textbox doesn't clear on submit */ />
+          </Row>
+          <Row>
+            <textarea rows="3"
+                  name="topics"
+                  placeholder="What did you talk about (optional)?"
+                  onChange={this.handleChange}
+                  value={this.state.topics} /* without this, textbox doesn't clear on submit */ />
+          </Row>
+          <Row>
+            <button>Add Encounter</button>
+          </Row>
+        </Col>
       </form>
     )
   }

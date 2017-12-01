@@ -1,24 +1,40 @@
 import React from 'react';
+import { Grid, Col, Row } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
 const Encounter = props => {
   return (
     <div className="Encounter">
-      <div className="Person-image">
-        <img src={props.Photo} alt="" />
-      </div>
-      <div className="Encounter_data">
-        <div className="Encounter-first-row">
-          <div className="Person-name">Who: {props.Person}</div>
-          <div className="Encounter-date">When: {props.Date}</div>
+      <Grid>
+        <div className="Encounter-data">
+          <Row>
+            <Col xs={2}>
+              <div className="Person-image">
+                <img src={props.Photo} alt="" />
+              </div>
+            </Col>
+              <Col xs={5}>
+                <Row>
+                  <div className="Person-name">{props.Person}</div>
+                </Row>
+                <Row>
+                  <div className="Encounter-date">{props.Date}</div>
+                </Row>
+              </Col>
+              <Col xs={5}>
+                <Row>
+                  <div className="Encounter-event">{props.Event}</div>
+                </Row>
+                <Row>
+                  <div className="Encounter-location">{props.Location}</div>
+                </Row>
+              </Col>
+          </Row>
+          <Row>
+            <div className="Encounter-topics">Topics: {props.Topics}</div>
+          </Row>
         </div>
-        <div className="Encounter-second-row">
-          <div className="Encounter-event">Event: {props.Event}</div>
-          <div className="Encounter-location">Location: {props.Location}</div>
-          <div className="Encounter-topics">Topics: {props.Topics}</div>
-        </div>
-      </div>
-
+      </Grid>
       <hr />
     </div>
   );

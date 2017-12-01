@@ -85,12 +85,14 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-header">
-          <h1>Timeline</h1>
-          {this.state.user ?
-            <button onClick={this.logout}>Log Out</button>
-            :
-            <button onClick={this.login}>Log In</button>
-          }
+          <div class="Heading-text">Timeline</div>
+          <div class="Login-button">
+            {this.state.user ?
+              <button onClick={this.logout}>Log Out</button>
+              :
+              <button onClick={this.login}>Log In</button>
+            }
+          </div>
         </div>
         {this.state.user ?
           <div className="wrapper">
