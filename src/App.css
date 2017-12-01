@@ -20,6 +20,10 @@
   font-size: 28px;
 }
 
+.New-encounter-button {
+  float:left;
+}
+
 .Login-button {
   float: right;
 }
