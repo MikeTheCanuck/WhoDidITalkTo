@@ -110,4 +110,5 @@ If you wish to make your own source code changes in a fork and automatically dep
 * https://dev.codetrick.net/how-to-create-a-reddit-clone-using-react-and-firebase/
 * https://css-tricks.com/intro-firebase-react/
 * https://css-tricks.com/firebase-react-part-2-user-authentication/
+* https://www.firebase.com/docs/security/guide/securing-data.html#section-dollar-variables
 * https://codeburst.io/learning-travis-ci-with-firebase-react-part-2-28a131913e28

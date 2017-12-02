@@ -8,10 +8,20 @@
 }
 
 .App-header {
-  background-color: #222;
+  background-color: green;
   height: 75px;
-  padding: 20px;
+
+  /* Super-hacky way to get the Login-button to not interfere with the New Encounter */
+  padding: 0px 0px 20px 0px;
   color: white;
+}
+
+.Heading-text {
+  font-size: 28px;
+}
+
+.Login-button {
+  float: right;
 }
 
 .App-intro {
@@ -23,59 +33,16 @@
   to { transform: rotate(360deg); }
 }
 
-/* .Person-image {
-  float: left
+/* Encounter component */
+
+.Encounter-data {
+  text-align: left;
 }
 
-.Person-name {
-  float: left;
-  padding: 10px
+.Encounter-topics {
+  font-style: italic;
 }
 
-.Encounter-date {
-  float: left;
-  padding: 10px
-}
-
-.Encounter-event {
-  float: left;
-  padding: 10px
-}
-
-.Encounter-first-row {
-  background: white
-}
-
-.Encounter-second-row {
-  background: lightgrey
-}
-
-.Encounter-first-row:after {
-  clear: both;
-  content: "";
-  display: table;
-}
-
-.Encounter-second-row:after {
-  clear: both;
-  content: "";
-  display: table;
-}
-
-.Encounter_data {
-  padding: 10px
-} */
-
-/* Three column definition for encounters  */
-
-.Person-image {
-  width: 30%
-}
-
-.Encounter_data {
-  width: 60%
-}
-
-.Encounter-navigation {
-  width: 10%
+.Person-image img {
+  width: 60px;
 }
