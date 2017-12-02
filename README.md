@@ -13,27 +13,28 @@ This will eventually help Mike answer the question, "Where did I meet you?" with
 
 ### First-time deployment of this app
 
-I've built this app assuming there's only a single user.  Since the infrastructure is free, and my primary objective is to help myself, this was a reasonable starting assumption.
+I started out building this app with the assumption there's only a single user.  Since the infrastructure is free, and my primary objective is to help myself, this was a reasonable starting assumption.
 
-However, if you're feeling brave/stupid enough to try this on your own, here's how to get an instance going on the latest commit that's on the master branch:
+I've since had to implement per-user data storage to ensure I could secure read & write of my data from anyone else who stumbled on this little app, but I haven't thoroughly verified if this works for others.  AND I have no intention of incurring real $$ costs by hosting any reasonable # of users on my personal Google Cloud account.
+
+So, if you're feeling brave/stupid enough to try this on your own, here's how to get an instance going on your own deployment (assumes we're using the latest commit on the master branch, and assumes you *aren't* interested in also using TravisCI for automated build and deploy):
 
 1. Launch a command-line session (e.g. `Terminal` on a Mac)
-2. Install NPM, git, firebase CLI and react-scripts tools.
-3. Get an account on Google's Firebase (https://console.firebase.google.com/) and Add a new project to host this app and its data.
+2. Install NPM, git, yarn and firebase CLI tools (see below for explicit instructions).
+3. Get an account on Google's Firebase (https://console.firebase.google.com/) and **Add a new project** to host the app code and its data.
 4. (Fork and) clone this repo:
-- 1. Browse to the project (mine or your fork) and click the "Clone or download" button.
+- 1. Browse to the project (mine or your fork) and click the **Clone or download** button.
 - 2. Click the clipboard icon.
-- 3. Open your command-line session, `cd` to the folder you want to put this code in and type `git clone ` and then paste the contents of your clipboard.
+- 3. Open your command-line session, `cd` to the folder you want to store this code in, type `git clone` and then paste the contents of your clipboard.
 5. Run `cd WhoDidITalkTo`.
 6. Run `cp src/firebase-config.js.sample src/firebase-config.js`.
-7. Edit `firebase-config.js` and replace the ALLCAPS placeholders - use the actual values you see when you browse to your new Firebase project and click on "Add Firebase to your web app".
+7. Edit `firebase-config.js` and replace the ALLCAPS placeholders, using the actual values (e.g. replace APIKEY with the value of **apiKey**) you see when you browse to your new Firebase project & click **Add Firebase to your web app**.
 8. Run `firebase init`, choose "Database" and "Hosting", then select defaults for **Database Rules**, **public directory** and **single-page app**.
-9. Edit `.firebaserc` and change the Project default name from `whodiditalkto` to match the name you gave it when setting up your new Firebase project.
+9. Edit `.firebaserc` and change the Project `default` name from **whodiditalkto** to match the name you gave it when setting up your new Firebase project.
+10. Run `yarn install` to get all the tools and dependencies onto your system for this project.
+11. Run `yarn build` to generate deployable code.
+12. Run `firebase deploy` to push that build to your Firebase project.
 
-(Figure out the best way for others to get `react-scripts` on their machine.)
-
-Run `yarn build`
-Run `firebase deploy`
 Browse to your newly-deployed app and enjoy!
 
 ### Synchronize app with updated code
@@ -62,6 +63,12 @@ For those of you who fork or clone this repo, if you want to be able to build, t
 brew install yarn
 cd WhoDidITalkTo
 yarn install
+```
+
+And if you'd like to deploy a production build of the code to your own Firebase project (direct from your computer, rather than via TravisCI or similar):
+
+``` shell
+npm install -g firebase-tools
 ```
 
 Note: I am gravitating to using Yarn as this project's official Node package manager, so only the `yarn.lock` is guaranteed to capture the dependency versions I'm using.  The `package-lock.json` from previous `npm` usage is still lingering, but I'm not slavishly maintaining it, and I'll likely remove it once I'm fully comfortable about the relationship between `yarn` and `npm` (starting with [this article](https://www.sitepoint.com/yarn-vs-npm/)).
