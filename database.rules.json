@@ -1,10 +1,19 @@
 {
   "rules": {
     "encounters": {
+      ".indexOn": "Date",
       "$uid": {
         ".read": "auth != null && auth.uid == $uid",
         ".write": "auth != null && auth.uid == $uid"
-      }
+      },
+        "Date": {
+          ".indexOn": ".value"
+        }
+    },
+    "test_encounters": {
+      ".indexOn": "Date",
+      ".read": "true",
+      ".write": "true"
     }
 //    ".read": "auth != null",
 //    ".write": "auth != null"
