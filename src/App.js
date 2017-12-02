@@ -83,8 +83,8 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-header">
-          <div class="Heading-text">Timeline</div>
-          <div class="Login-button">
+          <div className="Heading-text">Timeline</div>
+          <div className="Login-button">
             {this.state.user ?
               <button onClick={this.logout}>Log Out</button>
               :
