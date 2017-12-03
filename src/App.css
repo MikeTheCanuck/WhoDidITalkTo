@@ -20,6 +20,10 @@
   font-size: 28px;
 }
 
+.New-encounter-button {
+  float:left;
+}
+
 .Login-button {
   float: right;
 }
@@ -31,6 +35,11 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+/* NewEncounter component */
+.NewEncounter {
+  display: none;
 }
 
 /* Encounter component */

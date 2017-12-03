@@ -17,6 +17,7 @@ class App extends Component {
     }
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
+    this.showNew = this.showNew.bind(this);
   }
 
   componentDidMount() {
@@ -79,11 +80,21 @@ class App extends Component {
       });
   }
 
+  showNew() {
+    // Show the New Encounter form
+    // either display the inline Component or pop up a "portal": https://stackoverflow.com/a/45291662
+    document.getElementById("new-form").style.display = "inline";
+    console.log("showNew() has fired")
+  }
+
   render() {
     return (
       <div className="App">
         <div className="App-header">
-          <div className="Heading-text">Timeline</div>
+        <div className="Heading-text">Timeline</div>
+          <div className="New-encounter-button">
+            <button onClick={this.showNew}>New</button>
+          </div>
           <div className="Login-button">
             {this.state.user ?
               <button onClick={this.logout}>Log Out</button>
@@ -94,7 +105,7 @@ class App extends Component {
         </div>
         {this.state.user ?
           <div className="wrapper">
-            <div className="NewEncounter">
+            <div id="new-form" className="NewEncounter">
               <NewEncounter db={firebase}/>
             </div>
             <div className="Timeline">
