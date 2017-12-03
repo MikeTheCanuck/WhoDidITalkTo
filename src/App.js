@@ -89,13 +89,13 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-        <div className="Heading-text">Timeline</div>
-          <div className="New-encounter-button">
+      <div className="app">
+        <div className="app-header">
+        <div className="heading-text">Timeline</div>
+          <div className="new-encounter-button">
             <button onClick={this.showNew}>New</button>
           </div>
-          <div className="Login-button">
+          <div className="login-button">
             {this.state.user ?
               <button onClick={this.logout}>Log Out</button>
               :
@@ -105,10 +105,10 @@ class App extends Component {
         </div>
         {this.state.user ?
           <div className="wrapper">
-            <div id="new-form" className="NewEncounter">
+            <div id="new-form" className="new-encounter">
               <NewEncounter db={firebase}/>
             </div>
-            <div className="Timeline">
+            <div className="timeline">
               <EncounterList encounters={this.state.encounters} />
             </div>
           </div>

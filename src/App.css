@@ -1,13 +1,13 @@
-.App {
+.app {
   text-align: center;
 }
 
-.App-logo {
+.app-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
 }
 
-.App-header {
+.app-header {
   background-color: green;
   height: 75px;
 
@@ -16,19 +16,19 @@
   color: white;
 }
 
-.Heading-text {
+.heading-text {
   font-size: 28px;
 }
 
-.New-encounter-button {
+.new-encounter-button {
   float:left;
 }
 
-.Login-button {
+.login-button {
   float: right;
 }
 
-.App-intro {
+.app-intro {
   font-size: large;
 }
 
@@ -38,20 +38,20 @@
 }
 
 /* NewEncounter component */
-.NewEncounter {
+.new-encounter {
   display: none;
 }
 
 /* Encounter component */
 
-.Encounter-data {
+.encounter-data {
   text-align: left;
 }
 
-.Encounter-topics {
+.encounter-topics {
   font-style: italic;
 }
 
-.Person-image img {
+.person-image img {
   width: 60px;
 }
