@@ -90,8 +90,8 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-header">
-        <div class="Heading-text">Timeline</div>
-          <div class="New-encounter-button">
+        <div className="Heading-text">Timeline</div>
+          <div className="New-encounter-button">
             <button onClick={this.showNew}>New</button>
           </div>
           <div class="Login-button">
