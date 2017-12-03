@@ -17,6 +17,7 @@ class App extends Component {
     }
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
+    this.showNew = this.showNew.bind(this);
   }
 
   componentDidMount() {
@@ -79,13 +80,19 @@ class App extends Component {
       });
   }
 
+  showNew() {
+    // Show the New Encounter form
+    // either display the inline Component or pop up a "portal": https://stackoverflow.com/a/45291662
+
+  }
+
   render() {
     return (
       <div className="App">
         <div className="App-header">
         <div class="Heading-text">Timeline</div>
           <div class="New-encounter-button">
-            <button>New</button>
+            <button onClick={this.showNew}>New</button>
           </div>
           <div class="Login-button">
             {this.state.user ?
