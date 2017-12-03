@@ -9,14 +9,14 @@ Here's how I got my fresh-installed machine setup for working with React:
 (installed homebrew for my Mac) /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 brew install npm 
 brew install git
-cd timeline
+cd WhoDidITalkTo
 npm install -g create-react-app
 ```
 
 For you who fork or clone this repo, but already have experience with other GitHub projects, all you should need to do is:
 
 ```
-cd timeline
+cd WhoDidITalkTo
 npm install
 ```
 
