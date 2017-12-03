@@ -83,7 +83,7 @@ class App extends Component {
   showNew() {
     // Show the New Encounter form
     // either display the inline Component or pop up a "portal": https://stackoverflow.com/a/45291662
-
+    
   }
 
   render() {
@@ -94,7 +94,7 @@ class App extends Component {
           <div className="New-encounter-button">
             <button onClick={this.showNew}>New</button>
           </div>
-          <div class="Login-button">
+          <div className="Login-button">
             {this.state.user ?
               <button onClick={this.logout}>Log Out</button>
               :
