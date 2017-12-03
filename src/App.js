@@ -83,7 +83,8 @@ class App extends Component {
   showNew() {
     // Show the New Encounter form
     // either display the inline Component or pop up a "portal": https://stackoverflow.com/a/45291662
-    
+    document.getElementById("new-form").style.display = "inline";
+    console.log("showNew() has fired")
   }
 
   render() {
@@ -104,7 +105,7 @@ class App extends Component {
         </div>
         {this.state.user ?
           <div className="wrapper">
-            <div className="NewEncounter">
+            <div id="new-form" className="NewEncounter">
               <NewEncounter db={firebase}/>
             </div>
             <div className="Timeline">

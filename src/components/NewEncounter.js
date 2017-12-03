@@ -46,6 +46,7 @@ class NewEncounter extends Component {
       location: '',
       topics: ''
     })
+    document.getElementById("new-form").style.display = "none";
   }
 
   render() {
