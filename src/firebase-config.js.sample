@@ -6,15 +6,15 @@
 // 2. Replace all ALLCAPS values with the specific values you see in Firebase Project Overview, 
 //    when you click "Add Firebase to your web app".
 
-import firebase from 'firebase'
+import firebase from 'firebase';
 
 const config = {
-    apiKey: "APIKEY",
-    authDomain: "DOMAIN.firebaseapp.com",
-    databaseURL: "https://DATABASE.firebaseio.com",
-    projectId: "PROJECTID",
-    storageBucket: "STORAGE.appspot.com",
-    messagingSenderId: "SENDERID"
+    apiKey: 'APIKEY',
+    authDomain: 'DOMAIN.firebaseapp.com',
+    databaseURL: 'https://DATABASE.firebaseio.com',
+    projectId: 'PROJECTID',
+    storageBucket: 'STORAGE.appspot.com',
+    messagingSenderId: 'SENDERID',
 };
 
 firebase.initializeApp(config);
