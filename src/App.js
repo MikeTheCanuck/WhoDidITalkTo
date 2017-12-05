@@ -20,17 +20,6 @@ class App extends Component {
     this.showNew = this.showNew.bind(this);
   }
 
-  compareFunctionEncountersDescendingByDate(current, next) {
-    if (current.Date < next.Date) {
-      return -1;
-    }
-    if (current.Date > next.Date) {
-      return 1;
-    }
-    // names must be equal
-    return 0;
-  }
-
   componentDidMount() {
     // Persists the logged-in state across page refreshes
     auth.onAuthStateChanged((user) => {
@@ -66,11 +55,9 @@ class App extends Component {
           Topics: encounterz[encounter].Topics
         });
       }
-      this.setState({
-        encounters: newState
-      });
-      // sort encounters array descending by Date
-      this.state.encounters.sort((current, next) => {
+
+      // sort encounters by Date, descending
+      newState.sort((current, next) => {
         if (current.Date < next.Date) {
           return 1;
         }
@@ -80,10 +67,15 @@ class App extends Component {
         // names must be equal
         return 0;
       });
-      // writing state back on itself because otherwise it wasn't passing down sorted
+
       this.setState({
-        encounters: this.state.encounters
+        encounters: newState
       });
+      // writing state back on itself because otherwise it wasn't passing down sorted
+      // TODO: consolidate this and the previous call
+      // this.setState({
+      //   encounters: this.state.encounters
+      // });
 
     });
   };
