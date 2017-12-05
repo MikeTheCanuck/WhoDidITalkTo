@@ -1,7 +1,10 @@
-# remember-who-I-talked-to
-Who did I meet at that meetup last year?  Where did I see that person, and what did we talk about?
+# Who Did I Talk To, aka "That F'n Guy"
 
-This will eventually help Mike answer the question, "Where did I meet you?" without looking like an ass by asking the person I'm talking to.
+You know that feeling at meetups where someone recognizes you, but you have no idea where from? What you must've talked about so extensively that they're referencing it?  All that?
+
+Man, is it just me?
+
+I got tired of disappointing people so often, so I created an application that presents me a timeline of all the new people I've met, where and when, their picture and what we talked about.  I can quickly skim the timeline to refresh myself on people I'm likely to bump into, so they get the same warm feeling of being recognized that I get when they recognize me.
 
 # React setup
 Here's how I got my fresh-installed machine setup for working with React:
