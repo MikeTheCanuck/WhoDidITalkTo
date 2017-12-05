@@ -20,6 +20,17 @@ class App extends Component {
     this.showNew = this.showNew.bind(this);
   }
 
+  compareFunctionEncountersDescendingByDate(current, next) {
+    if (current.Date < next.Date) {
+      return -1;
+    }
+    if (current.Date > next.Date) {
+      return 1;
+    }
+    // names must be equal
+    return 0;
+  }
+
   componentDidMount() {
     // Persists the logged-in state across page refreshes
     auth.onAuthStateChanged((user) => {
@@ -58,6 +69,22 @@ class App extends Component {
       this.setState({
         encounters: newState
       });
+      // sort encounters array descending by Date
+      this.state.encounters.sort((current, next) => {
+        if (current.Date < next.Date) {
+          return 1;
+        }
+        if (current.Date > next.Date) {
+          return -1;
+        }
+        // names must be equal
+        return 0;
+      });
+      // writing state back on itself because otherwise it wasn't passing down sorted
+      this.setState({
+        encounters: this.state.encounters
+      });
+
     });
   };
 
