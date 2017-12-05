@@ -55,6 +55,19 @@ class App extends Component {
           Topics: encounterz[encounter].Topics
         });
       }
+
+      // sort encounters by Date, descending
+      newState.sort((current, next) => {
+        if (current.Date < next.Date) {
+          return 1;
+        }
+        if (current.Date > next.Date) {
+          return -1;
+        }
+        // names must be equal
+        return 0;
+      });
+
       this.setState({
         encounters: newState
       });
