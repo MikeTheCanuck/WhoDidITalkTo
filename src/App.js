@@ -71,12 +71,6 @@ class App extends Component {
       this.setState({
         encounters: newState
       });
-      // writing state back on itself because otherwise it wasn't passing down sorted
-      // TODO: consolidate this and the previous call
-      // this.setState({
-      //   encounters: this.state.encounters
-      // });
-
     });
   };
 
