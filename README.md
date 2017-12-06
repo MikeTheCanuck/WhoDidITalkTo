@@ -71,6 +71,12 @@ And if you'd like to deploy a production build of the code to your own Firebase 
 npm install -g firebase-tools
 ```
 
+If you wish to run tests locally, and you're using MacOS, per [Facebook guidance and many bug reports](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#troubleshooting) you may need to install `watchman` - which on MacOS is as easy as:
+
+```
+brew install watchman`
+```
+
 Note: I am gravitating to using Yarn as this project's official Node package manager, so only the `yarn.lock` is guaranteed to capture the dependency versions I'm using.  The `package-lock.json` from previous `npm` usage is still lingering, but I'm not slavishly maintaining it, and I'll likely remove it once I'm fully comfortable about the relationship between `yarn` and `npm` (starting with [this article](https://www.sitepoint.com/yarn-vs-npm/)).
 
 ## Setup for ongoing deployment
@@ -112,3 +118,4 @@ If you wish to make your own source code changes in a fork and automatically dep
 * https://css-tricks.com/firebase-react-part-2-user-authentication/
 * https://www.firebase.com/docs/security/guide/securing-data.html#section-dollar-variables
 * https://codeburst.io/learning-travis-ci-with-firebase-react-part-2-28a131913e28
+* https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#troubleshooting
