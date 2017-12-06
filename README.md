@@ -74,7 +74,7 @@ npm install -g firebase-tools
 If you wish to run tests locally, and you're using MacOS, per [Facebook guidance and many bug reports](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#troubleshooting) you may need to install `watchman` - which on MacOS is as easy as:
 
 ```
-brew install watchman`
+brew install watchman
 ```
 
 Note: I am gravitating to using Yarn as this project's official Node package manager, so only the `yarn.lock` is guaranteed to capture the dependency versions I'm using.  The `package-lock.json` from previous `npm` usage is still lingering, but I'm not slavishly maintaining it, and I'll likely remove it once I'm fully comfortable about the relationship between `yarn` and `npm` (starting with [this article](https://www.sitepoint.com/yarn-vs-npm/)).
