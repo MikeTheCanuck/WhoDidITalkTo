@@ -15,6 +15,8 @@ class App extends Component {
       user: null,
       encounters: [],
     }
+    // bind manually because React class components don't auto-bind
+    // http://facebook.github.io/react/blog/2015/01/27/react-v0.13.0-beta-1.html#autobinding
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
     this.showNew = this.showNew.bind(this);
