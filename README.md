@@ -35,3 +35,4 @@ I can't guarantee every step is necessary to run this app, but that sequence *di
 * https://css-tricks.com/intro-firebase-react/
 * https://css-tricks.com/firebase-react-part-2-user-authentication/
 * https://www.firebase.com/docs/security/guide/securing-data.html#section-dollar-variables
+* https://facebook.github.io/jest/docs/en/tutorial-react.html
