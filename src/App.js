@@ -15,8 +15,11 @@ class App extends Component {
       user: null,
       encounters: [],
     }
+    // bind manually because React class components don't auto-bind
+    // http://facebook.github.io/react/blog/2015/01/27/react-v0.13.0-beta-1.html#autobinding
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
+    this.showNew = this.showNew.bind(this);
   }
 
   componentDidMount() {
@@ -54,6 +57,19 @@ class App extends Component {
           Topics: encounterz[encounter].Topics
         });
       }
+
+      // sort encounters by Date, descending
+      newState.sort((current, next) => {
+        if (current.Date < next.Date) {
+          return 1;
+        }
+        if (current.Date > next.Date) {
+          return -1;
+        }
+        // names must be equal
+        return 0;
+      });
+
       this.setState({
         encounters: newState
       });
@@ -79,12 +95,22 @@ class App extends Component {
       });
   }
 
+  showNew() {
+    // Show the New Encounter form
+    // either display the inline Component or pop up a "portal": https://stackoverflow.com/a/45291662
+    document.getElementById("new-form").style.display = "inline";
+    console.log("showNew() has fired")
+  }
+
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <div className="Heading-text">Timeline</div>
-          <div className="Login-button">
+      <div className="app">
+        <div className="app-header">
+        <div className="heading-text">Timeline</div>
+          <div className="new-encounter-button">
+            <button onClick={this.showNew}>New</button>
+          </div>
+          <div className="login-button">
             {this.state.user ?
               <button onClick={this.logout}>Log Out</button>
               :
@@ -94,10 +120,10 @@ class App extends Component {
         </div>
         {this.state.user ?
           <div className="wrapper">
-            <div className="NewEncounter">
+            <div id="new-form" className="new-encounter">
               <NewEncounter db={firebase}/>
             </div>
-            <div className="Timeline">
+            <div className="timeline">
               <EncounterList encounters={this.state.encounters} />
             </div>
           </div>
