@@ -29,16 +29,26 @@ class NewEncounter extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const itemsRef = this.props.db.database().ref('encounters/' + this.props.db.auth().currentUser.uid);
+
+    const encounterItemsRef = this.props.db.database().ref('encounters/' + this.props.db.auth().currentUser.uid);
+    const peopleItemsRef = this.props.db.database().ref('people/' + this.props.db.auth().currentUser.uid);
+
     // record to be pushed has key-value pairs of "name of firebase field": "value of that field"
-    const item = {
+    const encounterItem = {
       Person: this.state.fullname,
       Date: this.state.date,
       Event: this.state.event,
       Location: this.state.location,
       Topics: this.state.topics
     }
-    itemsRef.push(item);
+
+    const personItem = {
+      FullName: this.state.fullname
+    }
+
+    peopleItemsRef.push(personItem);
+    // TODO: add feature to read the person_Id value back from the People "table" so we can set it in 
+    encounterItemsRef.push(encounterItem);
     this.setState({
       fullname: '',
       date: '',
