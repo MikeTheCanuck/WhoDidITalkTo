@@ -46,8 +46,13 @@ class NewEncounter extends Component {
       FullName: this.state.fullname,
     }
 
-    peopleItemsRef.push(personItem);
-    // TODO: add feature to read the person_Id value back from the People "table" so we can set it in 
+    // TODO: wrap this push() with a conditional that only runs if the fullname isn't already an existing record
+    peopleItemsRef.push(personItem)
+                  .then(function(ref) {
+                    let recordUid = ref.key;
+                    console.log("uid = " + recordUid);
+    });
+    // TODO: add recordUid as Person_Id to encounterItem
 
     encounterItemsRef.push(encounterItem);
 
