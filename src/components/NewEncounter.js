@@ -43,12 +43,14 @@ class NewEncounter extends Component {
     }
 
     const personItem = {
-      FullName: this.state.fullname
+      FullName: this.state.fullname,
     }
 
     peopleItemsRef.push(personItem);
     // TODO: add feature to read the person_Id value back from the People "table" so we can set it in 
+
     encounterItemsRef.push(encounterItem);
+
     this.setState({
       fullname: '',
       date: '',
@@ -56,6 +58,7 @@ class NewEncounter extends Component {
       location: '',
       topics: ''
     })
+
     document.getElementById("new-form").style.display = "none";
   }
 
