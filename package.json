@@ -5,11 +5,14 @@
   "homepage": "https://whodiditalkto.firebaseapp.com",
   "dependencies": {
     "axios": "^0.17.0",
+    "enzyme": "^3.2.0",
+    "enzyme-adapter-react-16": "^1.1.0",
     "firebase": "^4.7.0",
     "package.json": "^2.0.1",
     "react": "^16.1.1",
     "react-bootstrap": "^0.31.5",
-    "react-dom": "^16.1.1"
+    "react-dom": "^16.1.1",
+    "react-test-renderer": "^16.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
