@@ -14,6 +14,8 @@ class NewEncounter extends Component {
      and if the same trick works for binding this in the constructor */
   constructor() {
     super();
+    // bind manually because React class components don't auto-bind
+    // http://facebook.github.io/react/blog/2015/01/27/react-v0.13.0-beta-1.html#autobinding
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
