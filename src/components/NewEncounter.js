@@ -8,7 +8,6 @@ class NewEncounter extends Component {
   event: '',
   location: '',
   topics: '',
-  record_id: ''
   }
 
   /* TODO: research why initializing state variables doesn't have to be in the constructor(), 
