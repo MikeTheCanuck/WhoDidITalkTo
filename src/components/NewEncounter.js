@@ -7,7 +7,8 @@ class NewEncounter extends Component {
   date: '',
   event: '',
   location: '',
-  topics: ''
+  topics: '',
+  record_id: ''
   }
 
   /* TODO: research why initializing state variables doesn't have to be in the constructor(), 
@@ -35,6 +36,8 @@ class NewEncounter extends Component {
     const encounterItemsRef = this.props.db.database().ref('encounters/' + this.props.db.auth().currentUser.uid);
     const peopleItemsRef = this.props.db.database().ref('people/' + this.props.db.auth().currentUser.uid);
 
+    let recordId = '';
+        
     // record to be pushed has key-value pairs of "name of firebase field": "value of that field"
     const encounterItem = {
       Person: this.state.fullname,
@@ -49,13 +52,19 @@ class NewEncounter extends Component {
     }
 
     // TODO: wrap this push() with a conditional that only runs if the fullname isn't already an existing record
+    // TODO: make the record_id a return from the function, so that it's harvested outside the scope of the function
+    /* TODO: this is where function return and/or promise/callback seems to be necessary, since the console logging for
+             the harvesting of the data seems to run before the data has been harvested by the inner function
+    */
     peopleItemsRef.push(personItem)
                   .then(function(ref) {
                     let recordUid = ref.key;
+                    recordId = ref.key;
                     console.log("uid = " + recordUid);
     });
-    // TODO: add recordUid as Person_Id to encounterItem
+    // TODO: add value of recordUid as a new Person_Id field to encounterItem object
 
+    console.log("recordId has persisted and = " + recordId); // currently doesn't display a value for recordId
     encounterItemsRef.push(encounterItem);
 
     this.setState({
