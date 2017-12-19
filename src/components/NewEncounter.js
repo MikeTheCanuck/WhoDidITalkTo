@@ -99,4 +99,10 @@ class NewEncounter extends Component {
   }
 }
 
+NewEncounter.propTypes = {
+// TODO: confirm this is the correct proptype - firebase-config.js = an object with properties?
+// TODO: is this a required proptype?
+  db: PropTypes.object,
+};
+
 export default NewEncounter
