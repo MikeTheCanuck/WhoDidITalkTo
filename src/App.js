@@ -1,15 +1,15 @@
-import React, { Component } from "react";
-import "./App.css";
-import firebase, { auth, provider } from "./firebase-config";
-import EncounterList from "./components/EncounterList";
-import NewEncounter from "./components/NewEncounter";
+import React, { Component } from 'react';
+import './App.css';
+import firebase, { auth, provider } from './firebase-config';
+import EncounterList from './components/EncounterList';
+import NewEncounter from './components/NewEncounter';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
       user: null,
-      encounters: []
+      encounters: [],
     };
     // bind manually because React class components don't auto-bind
     // http://facebook.github.io/react/blog/2015/01/27/react-v0.13.0-beta-1.html#autobinding
@@ -20,25 +20,25 @@ class App extends Component {
 
   componentDidMount() {
     // Persists the logged-in state across page refreshes
-    auth.onAuthStateChanged(user => {
+    auth.onAuthStateChanged((user) => {
       if (user) {
         this.setState({ user });
 
         /* Kyle advises this stage of the component lifecycle is preferable to the constructor stage, 
         to pull data from the data layer, as it enables the app to display skeletal UI while 
         the data is retrieved and properly formulated */
-        /* I'm pulling the fetchEncounters() call into this if {} because that's the only way I can figure out 
+        /* I'm pulling the fetchEncounters() call into this if block because that's the only way I can figure out 
         how to access the "user" object */
         this.fetchEncounters(user);
       }
     });
   }
 
-  fetchEncounters = user => {
+  fetchEncounters = (user) => {
     // TODO: consolidate this and the NewEncounter component's declarations of the same object
-    const itemsRef = firebase.database().ref("encounters/" + user.uid);
+    const itemsRef = firebase.database().ref('encounters/' + user.uid);
 
-    itemsRef.on("value", snapshot => {
+    itemsRef.on('value', (snapshot) => {
       console.log(snapshot.val());
       let encounterz = snapshot.val();
       let newState = [];
@@ -50,7 +50,7 @@ class App extends Component {
           Photo: encounterz[encounter].Photo,
           Event: encounterz[encounter].Event,
           Location: encounterz[encounter].Location,
-          Topics: encounterz[encounter].Topics
+          Topics: encounterz[encounter].Topics,
         });
       }
 
@@ -67,16 +67,16 @@ class App extends Component {
       });
 
       this.setState({
-        encounters: newState
+        encounters: newState,
       });
     });
   };
 
   login() {
-    auth.signInWithPopup(provider).then(result => {
+    auth.signInWithPopup(provider).then((result) => {
       const user = result.user;
       this.setState({
-        user
+        user,
       });
     });
   }
@@ -84,7 +84,7 @@ class App extends Component {
   logout() {
     auth.signOut().then(() => {
       this.setState({
-        user: null
+        user: null,
       });
     });
   }
@@ -92,8 +92,8 @@ class App extends Component {
   showNew() {
     // Show the New Encounter form
     // either display the inline Component or pop up a "portal": https://stackoverflow.com/a/45291662
-    document.getElementById("new-form").style.display = "inline";
-    console.log("showNew() has fired");
+    document.getElementById('new-form').style.display = 'inline';
+    console.log('showNew() has fired');
   }
 
   render() {
