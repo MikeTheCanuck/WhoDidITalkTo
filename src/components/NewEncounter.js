@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Col, Row} from 'react-bootstrap';
 
 class NewEncounter extends Component {
@@ -98,5 +99,11 @@ class NewEncounter extends Component {
     )
   }
 }
+
+NewEncounter.propTypes = {
+// TODO: confirm this is the correct proptype - firebase-config.js = an object with properties?
+// TODO: is this a required proptype?
+  db: PropTypes.object,
+};
 
 export default NewEncounter
