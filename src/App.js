@@ -1,20 +1,16 @@
-import React, { Component } from 'react';
-import './App.css';
-import firebase, {auth, provider} from './firebase-config';
-import EncounterList from './components/EncounterList';
-import NewEncounter from './components/NewEncounter';
+import React, { Component } from "react";
+import "./App.css";
+import firebase, { auth, provider } from "./firebase-config";
+import EncounterList from "./components/EncounterList";
+import NewEncounter from "./components/NewEncounter";
 
 class App extends Component {
-  // state = {
-  //   encounters: [],
-  // };
-
   constructor() {
     super();
     this.state = {
       user: null,
-      encounters: [],
-    }
+      encounters: []
+    };
     // bind manually because React class components don't auto-bind
     // http://facebook.github.io/react/blog/2015/01/27/react-v0.13.0-beta-1.html#autobinding
     this.login = this.login.bind(this);
@@ -24,7 +20,7 @@ class App extends Component {
 
   componentDidMount() {
     // Persists the logged-in state across page refreshes
-    auth.onAuthStateChanged((user) => {
+    auth.onAuthStateChanged(user => {
       if (user) {
         this.setState({ user });
 
@@ -38,11 +34,11 @@ class App extends Component {
     });
   }
 
-  fetchEncounters = (user) => {
+  fetchEncounters = user => {
     // TODO: consolidate this and the NewEncounter component's declarations of the same object
-    const itemsRef = firebase.database().ref('encounters/' + user.uid);
+    const itemsRef = firebase.database().ref("encounters/" + user.uid);
 
-    itemsRef.on('value', (snapshot) => {
+    itemsRef.on("value", snapshot => {
       console.log(snapshot.val());
       let encounterz = snapshot.val();
       let newState = [];
@@ -77,61 +73,59 @@ class App extends Component {
   };
 
   login() {
-    auth.signInWithPopup(provider)
-      .then((result) => {
-        const user=result.user;
-        this.setState({
-          user
-        });
+    auth.signInWithPopup(provider).then(result => {
+      const user = result.user;
+      this.setState({
+        user
       });
+    });
   }
 
   logout() {
-    auth.signOut()
-      .then(() => {
-        this.setState({
-          user: null
-        });
+    auth.signOut().then(() => {
+      this.setState({
+        user: null
       });
+    });
   }
 
   showNew() {
     // Show the New Encounter form
     // either display the inline Component or pop up a "portal": https://stackoverflow.com/a/45291662
     document.getElementById("new-form").style.display = "inline";
-    console.log("showNew() has fired")
+    console.log("showNew() has fired");
   }
 
   render() {
     return (
       <div className="app">
         <div className="app-header">
-        <div className="heading-text">Timeline</div>
+          <div className="heading-text">Timeline</div>
           <div className="new-encounter-button">
             <button onClick={this.showNew}>New</button>
           </div>
           <div className="login-button">
-            {this.state.user ?
+            {this.state.user ? (
               <button onClick={this.logout}>Log Out</button>
-              :
+            ) : (
               <button onClick={this.login}>Log In</button>
-            }
+            )}
           </div>
         </div>
-        {this.state.user ?
+        {this.state.user ? (
           <div className="wrapper">
             <div id="new-form" className="new-encounter">
-              <NewEncounter db={firebase}/>
+              <NewEncounter db={firebase} />
             </div>
             <div className="timeline">
               <EncounterList encounters={this.state.encounters} />
             </div>
           </div>
-          :
+        ) : (
           <div className="wrapper">
             <p>Unless you're logged in, you don't get to see the data</p>
           </div>
-        }
+        )}
       </div>
     );
   }
