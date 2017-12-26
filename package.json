@@ -16,8 +16,15 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "precommit": "lint-staged",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,json,css}": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "devDependencies": {
     "eslint": "4.9.0",
