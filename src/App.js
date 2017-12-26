@@ -1,20 +1,16 @@
 import React, { Component } from 'react';
 import './App.css';
-import firebase, {auth, provider} from './firebase-config';
+import firebase, { auth, provider } from './firebase-config';
 import EncounterList from './components/EncounterList';
 import NewEncounter from './components/NewEncounter';
 
 class App extends Component {
-  // state = {
-  //   encounters: [],
-  // };
-
   constructor() {
     super();
     this.state = {
       user: null,
       encounters: [],
-    }
+    };
     // bind manually because React class components don't auto-bind
     // http://facebook.github.io/react/blog/2015/01/27/react-v0.13.0-beta-1.html#autobinding
     this.login = this.login.bind(this);
@@ -31,7 +27,7 @@ class App extends Component {
         /* Kyle advises this stage of the component lifecycle is preferable to the constructor stage, 
         to pull data from the data layer, as it enables the app to display skeletal UI while 
         the data is retrieved and properly formulated */
-        /* I'm pulling the fetchEncounters() call into this if {} because that's the only way I can figure out 
+        /* I'm pulling the fetchEncounters() call into this if block because that's the only way I can figure out 
         how to access the "user" object */
         this.fetchEncounters(user);
       }
@@ -54,7 +50,7 @@ class App extends Component {
           Photo: encounterz[encounter].Photo,
           Event: encounterz[encounter].Event,
           Location: encounterz[encounter].Location,
-          Topics: encounterz[encounter].Topics
+          Topics: encounterz[encounter].Topics,
         });
       }
 
@@ -71,67 +67,65 @@ class App extends Component {
       });
 
       this.setState({
-        encounters: newState
+        encounters: newState,
       });
     });
   };
 
   login() {
-    auth.signInWithPopup(provider)
-      .then((result) => {
-        const user=result.user;
-        this.setState({
-          user
-        });
+    auth.signInWithPopup(provider).then((result) => {
+      const user = result.user;
+      this.setState({
+        user,
       });
+    });
   }
 
   logout() {
-    auth.signOut()
-      .then(() => {
-        this.setState({
-          user: null
-        });
+    auth.signOut().then(() => {
+      this.setState({
+        user: null,
       });
+    });
   }
 
   showNew() {
     // Show the New Encounter form
     // either display the inline Component or pop up a "portal": https://stackoverflow.com/a/45291662
-    document.getElementById("new-form").style.display = "inline";
-    console.log("showNew() has fired")
+    document.getElementById('new-form').style.display = 'inline';
+    console.log('showNew() has fired');
   }
 
   render() {
     return (
       <div className="app">
         <div className="app-header">
-        <div className="heading-text">Timeline</div>
+          <div className="heading-text">Timeline</div>
           <div className="new-encounter-button">
             <button onClick={this.showNew}>New</button>
           </div>
           <div className="login-button">
-            {this.state.user ?
+            {this.state.user ? (
               <button onClick={this.logout}>Log Out</button>
-              :
+            ) : (
               <button onClick={this.login}>Log In</button>
-            }
+            )}
           </div>
         </div>
-        {this.state.user ?
+        {this.state.user ? (
           <div className="wrapper">
             <div id="new-form" className="new-encounter">
-              <NewEncounter db={firebase}/>
+              <NewEncounter db={firebase} />
             </div>
             <div className="timeline">
               <EncounterList encounters={this.state.encounters} />
             </div>
           </div>
-          :
+        ) : (
           <div className="wrapper">
             <p>Unless you're logged in, you don't get to see the data</p>
           </div>
-        }
+        )}
       </div>
     );
   }
