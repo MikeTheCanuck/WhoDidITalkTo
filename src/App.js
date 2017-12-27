@@ -123,7 +123,7 @@ class App extends Component {
           </div>
         ) : (
           <div className="wrapper">
-            <p>Unless you're logged in, you don't get to see the data</p>
+            <p>Unless you are logged in, you and the data shall never meet</p>
           </div>
         )}
       </div>
