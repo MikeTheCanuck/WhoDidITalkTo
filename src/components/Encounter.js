@@ -2,7 +2,7 @@ import React from 'react';
 import { Grid, Col, Row } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
-const Encounter = props => {
+const Encounter = (props) => {
   return (
     <div className="encounter">
       <Grid>
@@ -13,22 +13,22 @@ const Encounter = props => {
                 <img src={props.Photo} alt="" />
               </div>
             </Col>
-              <Col xs={5}>
-                <Row>
-                  <div className="person-name">{props.Person}</div>
-                </Row>
-                <Row>
-                  <div className="encounter-date">{props.Date}</div>
-                </Row>
-              </Col>
-              <Col xs={5}>
-                <Row>
-                  <div className="encounter-event">{props.Event}</div>
-                </Row>
-                <Row>
-                  <div className="encounter-location">{props.Location}</div>
-                </Row>
-              </Col>
+            <Col xs={5}>
+              <Row>
+                <div className="person-name">{props.Person}</div>
+              </Row>
+              <Row>
+                <div className="encounter-date">{props.Date}</div>
+              </Row>
+            </Col>
+            <Col xs={5}>
+              <Row>
+                <div className="encounter-event">{props.Event}</div>
+              </Row>
+              <Row>
+                <div className="encounter-location">{props.Location}</div>
+              </Row>
+            </Col>
           </Row>
           <Row>
             <div className="encounter-topics">Topics: {props.Topics}</div>
@@ -46,6 +46,7 @@ Encounter.propTypes = {
   Date: PropTypes.string.isRequired,
   Event: PropTypes.string,
   Location: PropTypes.string,
+  Topics: PropTypes.string,
 };
 
 Encounter.defaultProps = {
