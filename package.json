@@ -1,6 +1,9 @@
 {
   "name": "who-did-i-talk-to",
-  "version": "0.1.0",
+  "author": "Mike Lonergan",
+  "description": "A web an application that presents a timeline of all the new people I've met, where and when, their picture and what we talked about.",
+  "version": "0.2.0-beta",
+  "license": "Apache-2.0",
   "private": true,
   "homepage": "https://whodiditalkto.firebaseapp.com",
   "dependencies": {
