@@ -6,6 +6,10 @@ Man, is it just me?
 
 I got tired of disappointing people so often, so I created an application that presents me a timeline of all the new people I've met, where and when, their picture and what we talked about.  I can quickly skim the timeline to refresh myself on people I'm likely to bump into, so they get the same warm feeling of being recognized that I get when they recognize me.
 
+![Current UI for this web app](/assets/WhoDidITalkTo_v0.2.0.png "Here's how she looks")
+
+Note: the URL you see is my personal deployment, and is subject to massive architectural changes, data loss and blocking logins if I start getting charged by Google.  Use at your own risk!
+
 ## Are you running this app, or writing code to develop this app?
 
 1. If you're merely running a copy of this app for your own usage, look at the [Setup to run](#Setup-to-run-your-own-instance-of-this-app).
