@@ -35,8 +35,6 @@ class NewEncounter extends Component {
     const encounterItemsRef = this.props.db.database().ref('encounters/' + this.props.db.auth().currentUser.uid);
     const peopleItemsRef = this.props.db.database().ref('people/' + this.props.db.auth().currentUser.uid);
 
-    let recordId = '';
-        
     // record to be pushed has key-value pairs of "name of firebase field": "value of that field"
     const encounterItem = {
       Person: this.state.fullname,
@@ -57,14 +55,10 @@ class NewEncounter extends Component {
     */
     peopleItemsRef.push(personItem)
                   .then(function(ref) {
-                    let recordUid = ref.key;
-                    recordId = ref.key;
-                    console.log("uid = " + recordUid);
+                    // Now capture the foreign key relationship so I can re-use one Person across Encounters
+                    encounterItem.PersonId = ref.key;
+                    encounterItemsRef.push(encounterItem);
     });
-    // TODO: add value of recordUid as a new Person_Id field to encounterItem object
-
-    console.log("recordId has persisted and = " + recordId); // currently doesn't display a value for recordId
-    encounterItemsRef.push(encounterItem);
 
     this.setState({
       fullname: '',
