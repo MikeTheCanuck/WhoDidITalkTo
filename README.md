@@ -6,6 +6,12 @@ Man, is it just me?
 
 I got tired of disappointing people so often, so I created an application that presents me a timeline of all the new people I've met, where and when, their picture and what we talked about.  I can quickly skim the timeline to refresh myself on people I'm likely to bump into, so they get the same warm feeling of being recognized that I get when they recognize me.
 
+![Current UI for this web app](/assets/WhoDidITalkTo_v0.2.0.png "Here's how she looks")
+
+Note: the URL you see is my personal deployment, and is subject to massive architectural changes, data loss and blocking logins if I start getting charged by Google.  Use at your own risk!
+
+Longer note: I have no idea whether this is something anyone will care about using...but if it was, and if a large number of folks piled on to my Google Firebase hosting account, well...that's no beuno.  "That'd be a nice problem to have", except I've noticed lately that once people get something for free, there is a vocal number of anonymous folks on the interwebs who (a) scream when it's taken away or (b) actively sabotage efforts to cover costs let alone make a standalone business out of it.  I'm new to this game, and while I'm pretty sure there's no profitable future in this, I also don't want to leave myself wide open to the mess that is enraged anonymous freebie users.  I don't need that kind of stress in my life - corporate life has taken plenty of licks already.
+
 ## Are you running this app, or writing code to develop this app?
 
 1. If you're merely running a copy of this app for your own usage, look at the [Setup to run](#Setup-to-run-your-own-instance-of-this-app).
