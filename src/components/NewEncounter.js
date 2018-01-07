@@ -15,6 +15,7 @@ class NewEncounter extends Component {
      and if the same trick works for binding this in the constructor */
   constructor() {
     super();
+
     // bind manually because React class components don't auto-bind
     // http://facebook.github.io/react/blog/2015/01/27/react-v0.13.0-beta-1.html#autobinding
     this.handleChange = this.handleChange.bind(this);
@@ -32,18 +33,33 @@ class NewEncounter extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const itemsRef = this.props.db
-      .database()
-      .ref('encounters/' + this.props.db.auth().currentUser.uid);
+
+    let firebase_db = this.props.db;
+
+    const encounterItemsRef = firebase_db.database().ref('encounters/' + firebase_db.auth().currentUser.uid);
+    const peopleItemsRef = firebase_db.database().ref('people/' + firebase_db.auth().currentUser.uid);
+
     // record to be pushed has key-value pairs of "name of firebase field": "value of that field"
-    const item = {
+    const encounterItem = {
       Person: this.state.fullname,
       Date: this.state.date,
       Event: this.state.event,
       Location: this.state.location,
-      Topics: this.state.topics,
-    };
-    itemsRef.push(item);
+      Topics: this.state.topics
+    }
+
+    const personItem = {
+      FullName: this.state.fullname,
+    }
+
+    // TODO: wrap this push() with a conditional that only runs if the fullname isn't already an existing record
+    peopleItemsRef.push(personItem)
+                  .then(function(ref) {
+                    // Now capture the foreign key relationship so I can re-use one Person across Encounters
+                    encounterItem.PersonId = ref.key;
+                    encounterItemsRef.push(encounterItem);
+    });
+
     this.setState({
       fullname: '',
       date: '',
