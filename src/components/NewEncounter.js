@@ -3,17 +3,18 @@ import { Col, Row} from 'react-bootstrap';
 
 class NewEncounter extends Component {
   state = {
-  fullname: '',
-  date: '',
-  event: '',
-  location: '',
-  topics: '',
+    fullname: '',
+    date: '',
+    event: '',
+    location: '',
+    topics: '',
   }
 
   /* TODO: research why initializing state variables doesn't have to be in the constructor(), 
      and if the same trick works for binding this in the constructor */
   constructor() {
     super();
+
     // bind manually because React class components don't auto-bind
     // http://facebook.github.io/react/blog/2015/01/27/react-v0.13.0-beta-1.html#autobinding
     this.handleChange = this.handleChange.bind(this);
@@ -32,8 +33,10 @@ class NewEncounter extends Component {
   handleSubmit(e) {
     e.preventDefault();
 
-    const encounterItemsRef = this.props.db.database().ref('encounters/' + this.props.db.auth().currentUser.uid);
-    const peopleItemsRef = this.props.db.database().ref('people/' + this.props.db.auth().currentUser.uid);
+    let firebase_db = this.props.db;
+
+    const encounterItemsRef = firebase_db.database().ref('encounters/' + firebase_db.auth().currentUser.uid);
+    const peopleItemsRef = firebase_db.database().ref('people/' + firebase_db.auth().currentUser.uid);
 
     // record to be pushed has key-value pairs of "name of firebase field": "value of that field"
     const encounterItem = {
@@ -49,10 +52,6 @@ class NewEncounter extends Component {
     }
 
     // TODO: wrap this push() with a conditional that only runs if the fullname isn't already an existing record
-    // TODO: make the record_id a return from the function, so that it's harvested outside the scope of the function
-    /* TODO: this is where function return and/or promise/callback seems to be necessary, since the console logging for
-             the harvesting of the data seems to run before the data has been harvested by the inner function
-    */
     peopleItemsRef.push(personItem)
                   .then(function(ref) {
                     // Now capture the foreign key relationship so I can re-use one Person across Encounters
