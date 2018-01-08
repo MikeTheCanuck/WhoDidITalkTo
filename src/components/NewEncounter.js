@@ -34,30 +34,31 @@ class NewEncounter extends Component {
   handleSubmit(e) {
     e.preventDefault();
 
-    let firebase_db = this.props.db;
-
-    const encounterItemsRef = firebase_db.database().ref('encounters/' + firebase_db.auth().currentUser.uid);
-    const peopleItemsRef = firebase_db.database().ref('people/' + firebase_db.auth().currentUser.uid);
+    const _firebase_db = this.props.db;
+    const _uid = _firebase_db.auth().currentUser.uid;
+    const _encounterItemsRef = _firebase_db
+      .database()
+      .ref('encounters/' + _uid);
+    const _peopleItemsRef = _firebase_db.database().ref('people/' + _uid);
 
     // record to be pushed has key-value pairs of "name of firebase field": "value of that field"
-    const encounterItem = {
+    const _encounterItem = {
       Person: this.state.fullname,
       Date: this.state.date,
       Event: this.state.event,
       Location: this.state.location,
-      Topics: this.state.topics
-    }
+      Topics: this.state.topics,
+    };
 
-    const personItem = {
+    const _personItem = {
       FullName: this.state.fullname,
-    }
+    };
 
     // TODO: wrap this push() with a conditional that only runs if the fullname isn't already an existing record
-    peopleItemsRef.push(personItem)
-                  .then(function(ref) {
-                    // Now capture the foreign key relationship so I can re-use one Person across Encounters
-                    encounterItem.PersonId = ref.key;
-                    encounterItemsRef.push(encounterItem);
+    _peopleItemsRef.push(_personItem).then(function(ref) {
+      // Now capture the foreign key relationship so I can re-use one Person across Encounters
+      _encounterItem.PersonId = ref.key;
+      _encounterItemsRef.push(_encounterItem);
     });
 
     this.setState({
